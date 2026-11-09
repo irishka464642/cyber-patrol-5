@@ -77,6 +77,27 @@ main{max-width:1000px;margin:auto;padding:22px 18px 70px}header{display:flex;ali
 .contest-note{text-align:center;color:#e8bacc;font-size:.77rem;margin-top:15px}
 @media(max-width:540px){.contest-grid{gap:9px}.contest-section{padding:14px}.contest-entry img,.contest-fallback{height:120px}.contest-entry .entry-text{padding:10px}.contest-entry h4{font-size:.9rem}.contest-entry p{font-size:.7rem}.contest-vote{font-size:.83rem;padding:9px 5px}.contest-nav{padding:12px}.contest-heading{font-size:1.9rem}}
 
+
+/* Full chat simulator with reporting and blocking */
+.real-chat{position:relative;background:#edf1f7;color:#192945;border:1px solid #9cacc4;border-radius:21px;overflow:hidden;margin:18px auto;max-width:780px;box-shadow:0 15px 35px #0205154d;font-size:15px}
+.real-chat-head{display:flex;align-items:center;gap:11px;padding:12px 16px;background:#fdfefe;border-bottom:1px solid #dbe3eb;position:relative}
+.chat-back{font-size:34px;line-height:1;color:#4578b0}.chat-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#6cc0f4,#7464c3);display:grid;place-items:center;color:white;font-weight:850}
+.chat-person{display:flex;flex-direction:column;flex:1;min-width:0}.chat-person strong{font-size:1rem}.chat-person small{color:#6b8094;font-size:.7rem}
+.chat-menu-button{border:0;background:transparent;color:#334761;font-size:29px;line-height:1;cursor:pointer;min-width:40px;min-height:42px;border-radius:12px}.chat-menu-button:hover{background:#e7ecf5}
+.chat-menu{position:absolute;right:14px;top:62px;z-index:6;display:grid;min-width:230px;background:white;border:1px solid #d7e1ee;border-radius:12px;box-shadow:0 10px 30px #0b233c44;overflow:hidden}
+.chat-menu.hidden{display:none}.chat-menu button{background:white;border:0;border-bottom:1px solid #e2e9f1;text-align:left;color:#243c5d;padding:13px 15px;font:inherit;cursor:pointer}.chat-menu button:hover{background:#f5eaf0}
+.real-chat-body{min-height:220px;max-height:355px;overflow:auto;padding:16px;background-color:#e2eced;background-image:radial-gradient(#a1bbcc50 .8px,transparent .8px);background-size:14px 14px}
+.chat-date{width:max-content;margin:0 auto 16px;background:#ffffffac;padding:5px 15px;border-radius:20px;font-size:.72rem;color:#6d8294}
+.chat-bubble-row{display:flex;margin:8px 0}.chat-bubble-row.mine{justify-content:flex-end}.chat-bubble{max-width:80%;background:white;border-radius:4px 15px 15px 15px;padding:10px 14px 18px;white-space:pre-line;position:relative;box-shadow:0 2px 6px #0d364020;font-size:.96rem}
+.chat-bubble.me{background:#d0edb5;border-radius:15px 4px 15px 15px}.chat-clock{position:absolute;bottom:2px;right:9px;font-size:.62rem;color:#73808b}
+.chat-compose{display:flex;align-items:center;gap:12px;padding:10px 14px;background:#fff;border-top:1px solid #d9e3ec}
+.chat-compose span{font-size:27px;color:#718fae}.chat-compose input{background:#f1f5f8;border:1px solid #e0e5eb;border-radius:24px;min-width:0;flex:1;padding:10px 15px;color:#6d778c;font:inherit;cursor:pointer}
+.chat-send{background:#338ac6;color:white;border:0;width:41px;height:41px;border-radius:50%;font-size:1.1rem;cursor:pointer}
+.chat-taskbar{border-top:1px solid #ccd8e4;background:#f7f9ff;padding:14px}.chat-instruction{font-weight:770;color:#304866}.chat-tracker{font-size:.78rem;color:#536b85;margin:7px 0}
+.chat-option-list{display:grid;gap:9px;margin:12px 0 0}.chat-option{border:1px solid #b8cbe3;background:#fff;color:#243b59;border-radius:12px;text-align:left;padding:11px 14px;font:inherit;font-weight:680;cursor:pointer}
+.chat-option:hover{border-color:#6498cf;background:#f0f7ff}.chat-inline-feedback{margin-top:9px;padding:9px 11px;border-radius:11px;background:#e0f6eb;color:#1d6648;font-size:.85rem}.chat-inline-feedback.warning{background:#fff0db;color:#7e4d12}
+.chat-hintline{color:#637990;font-size:.78rem}
+@media(max-width:540px){.real-chat{font-size:14px}.real-chat-head{padding:10px}.chat-bubble{max-width:92%}.chat-taskbar{padding:11px}}
 </style>
 </head>
 <body>
@@ -111,9 +132,9 @@ const units=[
 {title:"Що не так з адресою?",scene:"Оглянь адресу та оформлення конкурсного сайту. Яка ознака найважливіша для перевірки?",options:["Яскраві фотографії робіт","Адреса school-halloween-prizes.example, яку не можна пов'язати з відомими організаторами","Помаранчевий колір кнопки"],correct:1,why:"Невідома адреса й відсутність підтвердженої інформації про організаторів — привід перевірити сайт. Самі фото й кольори не підтверджують надійності."},
 {title:"Обери два небезпечні поля",scene:"Познач два поля, які особливо небезпечно заповнювати на неперевіреному сайті конкурсу.",options:["Ім’я","Номер телефону","Пароль або код входу до акаунта","Обрана робота конкурсу"],correct:2,correctSet:[1,2],why:"Номер телефону — особисті дані, які не варто надавати сумнівному сайту. Пароль і коди входу не можна повідомляти взагалі. Ім’я та прізвище теж не слід вводити без перевірки організаторів."}]},
 {icon:"📱",name:"Месенджер",tasks:[
-{title:"Незнайомець пише",scene:"Привіт! Я друг твого старшого брата. Скинь, будь ласка, свою геолокацію, я поряд 😉",options:["Ось де я зараз 📍","Не надсилатиму адресу. Перевірю, хто це, через рідних.","Зараз надішлю фото свого будинку."],correct:1,why:"Не передавай свою геолокацію незнайомцям, навіть якщо вони називаються друзями родини."},
-{title:"Незвичне прохання",scene:"Друг: «Дуже треба! Скинь мені код, який прийшов тобі SMS. Потім усе поясню!»",options:["Секундочку, зараз перешлю код.","Дай номер свого телефону, я продиктую.","Коди входу нікому не надсилаю. Перевірю, чи це справді ти."],correct:2,why:"Код підтвердження — секрет. Навіть акаунт друга могли зламати."},
-{title:"Підтримка в чаті",scene:"У групі хтось постійно висміює однокласника. Інші сміються й ставлять реакції.",options:["Це неприємно. Не підтримуватиму образи та звернуся до дорослого.","Поставлю смайлик, щоб не виділятися.","Перешлю скриншот іншим, щоб усі побачили."],correct:0,why:"Не приєднуйся до цькування. Збережи докази й попроси допомоги дорослого, якому довіряєш."}]},
+{title:"Незнайомець просить геолокацію",scene:"Привіт! Я друг твого брата. Скинь свою геолокацію, я поряд 😉",correct:0,why:"Незнайомцю не можна передавати місцеперебування. Для підозрілого контакту доречно поскаржитися на спам і заблокувати його. Реального блокування немає — це тренажер."},
+{title:"Друг просить код із SMS",scene:"Дуже терміново! Скинь мені код, який тобі щойно прийшов. Потім усе поясню!",correct:0,why:"Коди підтвердження не можна передавати навіть знайомим: акаунт друга могли зламати. Перевір прохання іншим відомим способом."},
+{title:"Образи у класному чаті",scene:"Та він знову нічого не зрозумів 😂😂😂\nДавайте його виключимо з групи!",correct:0,why:"Не підтримуй цькування: можна повідомити про образи, підтримати однокласника й звернутися до вчителя або дорослого. Не поширюй образливі повідомлення далі."}]},
 {icon:"⚙️",name:"Налаштування профілю",tasks:[
 {title:"Показувати точне місцеперебування",scene:"Твій профіль зараз відкритий для всіх. Увімкнена функція «Показувати мою точну геолокацію». Налаштуй її безпечно.",correct:1,why:"Точна геолокація не повинна бути доступною незнайомцям. Вимкни її для публічного профілю.",setting:"Публічна геолокація"},
 {title:"Показувати номер телефону",scene:"У профілі публічно відображається твій номер телефону. Обери безпечне налаштування.",correct:1,why:"Номер телефону — особисті дані. Не роби його відкритим для всіх.",setting:"Телефон бачать усі"},
@@ -278,15 +299,81 @@ $("tip").textContent=ok?"Добре! Номер телефону й пароль
 $("next").textContent="Далі →";$("next").classList.remove("hidden");
 }
 function renderChat(t){
-const outer=document.createElement("div");outer.className="mock-chat";
-const head=document.createElement("div");head.className="chat-head";head.textContent="🟢 Повідомлення · "+(["Невідомий контакт","Контакт: друг","Група класу"][index%3]);
-const body=document.createElement("div");body.className="chat-body";
-const bubble=document.createElement("div");bubble.className="bubble";bubble.textContent=t.scene;body.append(bubble);
-const replies=document.createElement("div");replies.className="chat-replies";
-const hint=document.createElement("div");hint.className="settingnote";hint.textContent="Обери, що відповісти або як діяти:";
-replies.append(hint);t.options.forEach((x,i)=>replies.append(makeAction(x,i)));
-outer.append(head,body,replies);$("choices").append(outer);
+const scenario=index%3,required=scenario===0?["report","block"]:scenario===1?["safe"]:["report","support"];
+const done=new Set();let hadMistake=false;
+const contacts=["Невідомий контакт","Максим","Чат 5-Б"];const avatars=["?","М","5"];
+const outer=document.createElement("div");outer.className="real-chat";
+const head=document.createElement("div");head.className="real-chat-head";
+const back=document.createElement("span");back.className="chat-back";back.textContent="‹";
+const avatar=document.createElement("div");avatar.className="chat-avatar";avatar.textContent=avatars[scenario];
+const user=document.createElement("div");user.className="chat-person";user.innerHTML="<strong></strong><small>у мережі · навчальна симуляція</small>";user.querySelector("strong").textContent=contacts[scenario];
+const menuButton=document.createElement("button");menuButton.type="button";menuButton.className="chat-menu-button";menuButton.textContent="⋮";menuButton.setAttribute("aria-label","Дії з контактом");
+const menu=document.createElement("div");menu.className="chat-menu hidden";menu.setAttribute("aria-label","Меню чату");
+head.append(back,avatar,user,menuButton,menu);
+const chatBody=document.createElement("div");chatBody.className="real-chat-body";
+const date=document.createElement("div");date.className="chat-date";date.textContent="Сьогодні";
+chatBody.append(date);
+function bubble(content,mine=false){
+const row=document.createElement("div");row.className="chat-bubble-row"+(mine?" mine":"");
+const el=document.createElement("div");el.className="chat-bubble"+(mine?" me":"");el.textContent=content;
+const clock=document.createElement("span");clock.className="chat-clock";clock.textContent=mine?"11:43 ✓✓":"11:42";
+el.append(clock);row.append(el);chatBody.append(row);
+chatBody.scrollTop=chatBody.scrollHeight;
+return el;
 }
+if(scenario===2){bubble("Хто зробив домашнє?");bubble("Він знову нічого не знає 🙄");}
+bubble(t.scene);
+const bottom=document.createElement("div");bottom.className="chat-compose";
+const clip=document.createElement("span");clip.textContent="＋";clip.setAttribute("aria-hidden","true");
+const entry=document.createElement("input");entry.type="text";entry.placeholder="Повідомлення…";entry.readOnly=true;entry.setAttribute("aria-label","Відкрий варіанти відповіді нижче");
+const send=document.createElement("button");send.type="button";send.className="chat-send";send.textContent="➤";send.setAttribute("aria-label","Варіанти повідомлень");
+bottom.append(clip,entry,send);
+const taskbar=document.createElement("div");taskbar.className="chat-taskbar";
+const hint=document.createElement("div");hint.className="chat-instruction";
+hint.textContent=["Захисти себе: скористайся меню ⋮, щоб поскаржитися та заблокувати незнайомця.","Обери, як безпечно відповісти на прохання про код.","Допоможи однокласнику: поскаржся на образи й напиши підтримку."][scenario];
+const tracker=document.createElement("div");tracker.className="chat-tracker";
+const options=document.createElement("div");options.className="chat-option-list";
+function updateTracker(){tracker.textContent="Виконано безпечних дій: "+done.size+" / "+required.length;}
+function finishChat(){
+if(answered||!required.every(x=>done.has(x)))return;
+answered=true;
+const ok=!hadMistake;const t=tasks[index];
+answers[index]={selected:[...done],correct:ok};
+timeByUnit[t.mi]+=Math.max(0,Math.min(300,Math.round((Date.now()-questionStarted)/1000)));
+if(ok){score++;$("score").textContent=score;}
+menuButton.disabled=true;send.disabled=true;[...outer.querySelectorAll("button")].forEach(b=>b.disabled=true);
+const f=$("feedback");f.className="feedback"+(ok?"":" bad");f.replaceChildren();
+const title=document.createElement("strong");title.textContent=ok?"✅ Безпечні дії виконано! +1 бал":"💡 Ось як діяти безпечно";
+const desc=document.createElement("span");desc.textContent=t.why;f.append(title,desc);
+$("tip").textContent=ok?"Чудово, переходь до наступного чату.":"Пам’ятай: не кожен контакт потрібно блокувати, але спам і образи можна скаржити.";
+$("next").textContent="Далі →";$("next").classList.remove("hidden");
+}
+function showFeedback(text,warning=false){const p=document.createElement("div");p.className="chat-inline-feedback"+(warning?" warning":"");p.textContent=text;taskbar.append(p);if(taskbar.querySelectorAll(".chat-inline-feedback").length>2)taskbar.querySelector(".chat-inline-feedback").remove();}
+function doAction(action){
+if(answered)return;
+if(action==="reply-location"||action==="reply-code"||action==="mock"){hadMistake=true;showFeedback(action==="reply-location"?"Надсилати геолокацію незнайомцю небезпечно.":action==="reply-code"?"Код входу не можна нікому пересилати.":"Такі реакції можуть посилити цькування.",true);return;}
+if(action==="safe"){if(!done.has("safe")){done.add("safe");bubble("Коди входу нікому не надсилаю. Зв’яжуся з тобою іншим способом.",true);updateTracker();}finishChat();return;}
+if(action==="support"){if(!done.has("support")){done.add("support");bubble("Не треба ображати однокласника. Давайте спілкуватися з повагою.",true);updateTracker();}finishChat();return;}
+if(action==="report"){if(!done.has("report")){done.add("report");showFeedback("✅ Скаргу на "+(scenario===2?"образливі повідомлення":"спам")+" надіслано (імітація).");updateTracker();}finishChat();return;}
+if(action==="block"){if(scenario===2){hadMistake=true;showFeedback("Для цієї ситуації важливіше повідомити про образи та підтримати однокласника.",true);return;}if(scenario===1){hadMistake=true;showFeedback("Спочатку безпечно відмов у пересиланні коду та перевір друга іншим способом.",true);return;}if(!done.has("block")){done.add("block");showFeedback("🔒 Контакт заблоковано (імітація).");updateTracker();}finishChat();return;}
+}
+const menuOptions=[["🚩 Поскаржитися на "+(scenario===2?"образи":"спам"),"report"],["🚫 Заблокувати контакт","block"]];
+menuOptions.forEach(([label,action])=>{const b=document.createElement("button");b.type="button";b.textContent=label;b.addEventListener("click",()=>{menu.classList.add("hidden");doAction(action);});menu.append(b);});
+menuButton.addEventListener("click",()=>{if(!answered)menu.classList.toggle("hidden");});
+const choices=scenario===0?[["📍 Надіслати моє місцеперебування","reply-location"],["Відкрити меню ⋮ й обрати безпечні дії","open-menu"]]:scenario===1?[["Переслати отриманий код","reply-code"],["Не надавати код. Перевірити друга іншим способом","safe"]]:[["Підтримати образливий жарт 😆","mock"],["Написати підтримку однокласнику","support"]];
+function revealOptions(){
+options.replaceChildren();
+choices.forEach(([label,action])=>{const b=document.createElement("button");b.type="button";b.className="chat-option";b.textContent=label;b.addEventListener("click",()=>{if(action==="open-menu"){menu.classList.remove("hidden");return;}doAction(action);});options.append(b);});
+}
+send.addEventListener("click",revealOptions);entry.addEventListener("click",revealOptions);
+taskbar.append(hint,tracker);
+if(scenario===0){const m=document.createElement("div");m.className="chat-hintline";m.textContent="Відкрий ⋮ угорі праворуч — там є потрібні інструменти.";taskbar.append(m);}
+else revealOptions();
+taskbar.append(options);
+updateTracker();
+outer.append(head,chatBody,bottom,taskbar);$("choices").append(outer);
+}
+
 function renderSettings(t){
 const outer=document.createElement("div");outer.className="mock-settings";
 const head=document.createElement("div");head.className="settings-head";head.textContent="⚙️ Налаштування приватності · Мій профіль";
