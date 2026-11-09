@@ -16,6 +16,29 @@ main{max-width:1000px;margin:auto;padding:22px 18px 70px}header{display:flex;ali
 @media(max-width:650px){.hero{grid-template-columns:1fr}.mascot{display:none}.missions{gap:5px}.mission{font-size:.66rem;padding:8px 2px}.mission .emoji{font-size:1.25rem}.card{border-radius:19px}.statbox{gap:7px}.stat{font-size:.9rem;padding:9px 11px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 .report{max-width:620px;margin:30px auto 0;text-align:left;background:#121c35;padding:20px;border-radius:18px;border:1px solid #3e5175}.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:18px 0}.fields label{font-weight:750;color:var(--muted);font-size:.9rem}.fields input,.fields select{display:block;width:100%;background:#263456;color:var(--white);border:1px solid #67779e;border-radius:12px;font:inherit;padding:12px;margin-top:7px}.breakdown{display:grid;gap:8px}.breakdown div{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid #415073;padding:7px 0}.breakdown strong{color:var(--aqua)}@media(max-width:480px){.fields{grid-template-columns:1fr}}@media print{body{background:white;color:black}header,.lead,#intro,#game,footer,.foot,.hint{display:none!important}.card,.report{box-shadow:none;border:1px solid #999;background:white;color:black}.result,.breakdown strong{color:black}.fields input,.fields select{color:black;background:white}.finalscore{color:black}}
+
+/* Interactive screen simulations */
+.mock-browser,.mock-chat,.mock-settings{border:1px solid #647598;border-radius:20px;background:#f5f8ff;color:#172344;overflow:hidden;margin:20px 0}
+.browserbar{padding:13px;background:#e1e8f6;display:flex;align-items:center;gap:10px;font-size:.86rem}
+.fake-url{border-radius:9px;background:white;border:1px solid #b7c3d8;padding:7px 12px;word-break:break-word;flex:1;color:#4f3a69}
+.fake-site{padding:25px;text-align:center;background:linear-gradient(130deg,#eaf2ff,#fdf3fa)}
+.fake-site h3{margin:4px 0 8px;color:#293762;font-size:1.6rem}.fake-site .sub{color:#586886}
+.fake-controls{padding:17px;display:grid;gap:9px;background:#fff}
+.mock-action{font:inherit;font-weight:720;text-align:left;padding:12px 15px;border:2px solid #d3ddee;border-radius:12px;background:#f3f6ff;color:#192847;cursor:pointer}
+.mock-action:hover{background:#e5efff}.mock-action:disabled{cursor:default;opacity:.8}
+.mock-action.right{border-color:#188a65;background:#d7f5e8}.mock-action.wrong{border-color:#c34b7c;background:#f9dce8}
+.chat-head{background:#dce8fa;padding:13px 18px;font-weight:850;display:flex;gap:12px;align-items:center}
+.chat-body{background:#e9f0fa;padding:19px;min-height:145px}
+.bubble{background:#fff;max-width:84%;padding:13px 16px;border-radius:3px 17px 17px 17px;box-shadow:0 3px 12px #13213c19;white-space:pre-line}
+.chat-replies{padding:15px;background:#fff;display:grid;gap:9px}
+.chat-replies .mock-action{border-radius:17px}
+.settings-head{background:#e1e8f6;padding:15px 20px;font-weight:900}
+.settings-body{padding:22px}.switchline{display:flex;justify-content:space-between;align-items:center;gap:15px;background:#fff;border:1px solid #d5dfed;padding:18px;border-radius:16px}
+.switch{position:relative;width:62px;height:36px;border-radius:40px;background:#248d70;cursor:pointer;border:0;flex:none}
+.switch::after{content:"";position:absolute;width:28px;height:28px;background:#fff;border-radius:50%;top:4px;left:30px;transition:left .15s}
+.switch.off{background:#7d8ca6}.switch.off::after{left:4px}
+.settingnote{color:#67758e;font-size:.86rem;padding:12px 0}.mock-save{background:#344ac0;border:0;border-radius:12px;padding:13px 21px;font:inherit;font-weight:850;color:white;cursor:pointer}
+.mock-save:disabled{opacity:.6}
 </style>
 </head>
 <body>
@@ -23,7 +46,7 @@ main{max-width:1000px;margin:auto;padding:22px 18px 70px}header{display:flex;ali
 <header><div class="brand">💬 СПІЛКУВАННЯ ОНЛАЙН <span style="color:var(--aqua)">/ 5 КЛАС</span></div><span class="chip">Практика онлайн-безпеки</span></header>
 <section id="intro">
 <div class="hero"><div><div class="eyebrow">Інтерактивна практика · 5 вправ</div><h1>Пиши ввічливо.<br>Спілкуйся безпечно.<br><span style="color:var(--aqua)">Думай перед кліком.</span></h1><p class="lead">Розбери ситуації зі шкільних чатів, онлайн-ігор і месенджерів. Обирай рішення та дізнавайся, як захистити себе й поважати інших.</p></div><div class="mascot" aria-hidden="true">💬</div></div>
-<div class="card"><h2>Як виконувати вправи</h2><ul><li>5 вправ, у кожній по 3 короткі ситуації.</li><li>Обирай <b>одну найкращу відповідь</b>. Після вибору отримуєш пояснення.</li><li>За правильну відповідь із першого разу — <b>1 бал</b>, максимум 15.</li><li>Помилки — частина навчання: після кожної відповіді є пояснення.</li></ul><div class="student-form"><h2 style="font-size:1.3rem">Твої дані</h2><p class="hint">Заповни перед початком. Дані потрібні, щоб учитель міг визначити, чий це результат. Паролі й контакти не вводь.</p><div class="fields student-fields"><label>Клас<select id="studentclass" required><option value="">Обери клас</option><option value="5-А">5-А</option><option value="5-Б">5-Б</option></select></label><label>Група<select id="studentgroup" required><option value="">Обери групу</option><option value="1">1</option><option value="2">2</option></select></label><label>Прізвище<input id="surname" type="text" maxlength="50" autocomplete="family-name" placeholder="Прізвище" required></label><label>Ім’я<input id="firstname" type="text" maxlength="50" autocomplete="given-name" placeholder="Ім’я" required></label></div><p class="hint" id="startStatus" role="status"></p></div><p class="hint">Наразі сайт не передає результати автоматично. Після завершення їх можна надіслати вчителю.</p><button class="primary" id="start">Почати вправи</button></div>
+<div class="card"><h2>Як виконувати вправи</h2><ul><li>5 різних вправ: короткі запитання, фейкова сторінка голосування, чат і налаштування приватності.</li><li>На екранах треба не лише відповідати, а й натискати елементи та змінювати налаштування.</li><li>За правильну відповідь із першого разу — <b>1 бал</b>, максимум 15.</li><li>Помилки — частина навчання: після кожної відповіді є пояснення.</li></ul><div class="student-form"><h2 style="font-size:1.3rem">Твої дані</h2><p class="hint">Заповни перед початком. Дані потрібні, щоб учитель міг визначити, чий це результат. Паролі й контакти не вводь.</p><div class="fields student-fields"><label>Клас<select id="studentclass" required><option value="">Обери клас</option><option value="5-А">5-А</option><option value="5-Б">5-Б</option></select></label><label>Група<select id="studentgroup" required><option value="">Обери групу</option><option value="1">1</option><option value="2">2</option></select></label><label>Прізвище<input id="surname" type="text" maxlength="50" autocomplete="family-name" placeholder="Прізвище" required></label><label>Ім’я<input id="firstname" type="text" maxlength="50" autocomplete="given-name" placeholder="Ім’я" required></label></div><p class="hint" id="startStatus" role="status"></p></div><p class="hint">Наразі сайт не передає результати автоматично. Після завершення їх можна надіслати вчителю.</p><button class="primary" id="start">Почати вправи</button></div>
 </section>
 <section id="game" class="hidden" aria-live="polite">
 <div class="statbox"><div class="stat">🎯 Завдання: <b id="counter">1 / 15</b></div><div class="stat">⭐ Бали: <b id="score">0</b></div><div class="stat">📚 Вправа: <b id="missionnum">1 / 5</b></div></div>
@@ -45,18 +68,19 @@ const units=[
 {title:"Незнайомець у повідомленнях",scene:"Незнайомий акаунт пише: «Привіт! Я друг твого брата. Скажи, де ти зараз?»",options:["Відразу напишу точну адресу.","Не повідомлятиму місцеперебування; покажу повідомлення дорослому, якому довіряю.","Надішлю фото свого будинку."],correct:1,why:"Невідомій людині не варто передавати адресу чи місцеперебування. Перевіряй особу через дорослих."},
 {title:"Сварка в групі",scene:"Двоє друзів посварилися в чаті, почали ображати одне одного.",options:["Приєднаюся, щоб підтримати когось образами.","Перешлю сварку в інші групи.","Запропоную припинити образи й обговорити проблему спокійно."],correct:2,why:"Мережевий етикет допомагає розв'язати конфлікти без приниження інших."},
 {title:"Повідомлення пізно ввечері",scene:"Однокласник не відповідає на твоє запитання о 23:30.",options:["Зачекаю до зручного часу: люди мають право не відповідати одразу.","Буду телефонувати, доки не відповість.","Напишу всім, що він мене ігнорує."],correct:0,why:"Поважай особистий час іншої людини. Не вимагай миттєвої відповіді."}]},
-{icon:"🔗",name:"Підозрілі повідомлення",tasks:[
-{title:"Безкоштовні ігрові монети",scene:"Повідомлення: «🎮 10 000 монет у грі! Тільки зараз! Увійди за паролем за цим посиланням»",options:["Перейду та введу пароль.","Не відкриватиму підозріле посилання й не вводитиму пароль.","Надішлю другу, нехай перевірить."],correct:1,why:"Обіцянки легких подарунків часто використовують для викрадення паролів. Не передавай посилання іншим."},
-{title:"Термінове прохання",scene:"Акаунт друга раптово пише: «Терміново перекинь гроші. Нікому не кажи!»",options:["Перевірю прохання іншим відомим способом і звернуся до дорослого.","Перекину гроші, бо це друг.","Напишу реквізити картки батьків."],correct:0,why:"Акаунти можуть зламати. Незвичне термінове прохання треба перевірити окремим каналом."},
-{title:"Підозрілий файл",scene:"У чат прийшов невідомий файл «Твої_оцінки_терміново.exe» від незнайомого акаунта.",options:["Запущу, щоб подивитися.","Перешлю всім, кому цікаво.","Не відкриватиму; повідомлю дорослого або вчителя."],correct:2,why:"Невідомі файли можуть містити шкідливі програми. Розширення .exe означає виконуваний файл."}]},
-{icon:"🔒",name:"Особисті дані",tasks:[
-{title:"Що можна розповісти?",scene:"Ти знайомишся в ігровому чаті з новим гравцем. Яка інформація найменш ризикована?",options:["Мій домашній адрес і номер телефону.","Пароль від акаунта.","Мій улюблений жанр ігор."],correct:2,why:"Інтереси можна обговорювати без передачі адреси, телефону, паролів чи точного розкладу."},
-{title:"Пароль для друга",scene:"Друг каже: «Дай свій пароль на хвилинку, мені дуже треба!»",options:["Не передаватиму пароль навіть друзям.","Дам пароль, якщо пообіцяє нікому не казати.","Напишу пароль у класний чат."],correct:0,why:"Пароль — особистий секрет. Навіть дружба не вимагає доступу до чужого акаунта."},
-{title:"Геолокація на фото",scene:"Ти публікуєш фото біля свого будинку. Додаток пропонує додати точну геолокацію.",options:["Обов'язково додам точну адресу.","Вимкну точну геолокацію і перевірю, чи фото не розкриває приватні дані.","Додам номер квартири в опис."],correct:1,why:"Точне місцеперебування — приватна інформація. Краще не показувати його незнайомцям."}]},
-{icon:"✅",name:"Перевір себе",tasks:[
-{title:"Кібербулінг",scene:"У чаті кілька учнів систематично висміюють однокласника. Що робити?",options:["Не підтримувати цькування, зберегти докази та звернутися до дорослого, якому довіряєш.","Поставити лайк, щоб не виділятися.","Створити ще один чат для жартів."],correct:0,why:"Повторювані приниження в інтернеті — серйозна проблема. Підтримка й допомога дорослих важливі."},
-{title:"Злам акаунта?",scene:"Тобі надійшов код входу, хоча ти не намагався увійти в акаунт. Потім незнайомець просить переслати код.",options:["Перешлю код, щоб людина перестала писати.","Викладу код у сторіс.","Нікому не повідомлю код; перевірю безпеку акаунта з дорослим."],correct:2,why:"Одноразові коди підтверджують вхід. Їх нікому не можна пересилати."},
-{title:"Пауза перед кліком",scene:"Перед тим як відправити повідомлення чи відкрити посилання, що найкраще зробити?",options:["Діяти швидко, щоб не втратити шанс.","Перевірити: це ввічливо, безпечно й не розкриває чужих або моїх даних?","Питати лише друзів, чи це модно."],correct:1,why:"Перш ніж діяти онлайн, корисно подумати про наслідки й обрати відповідальне рішення."}]}
+{icon:"🗳️",name:"Сторінка голосування",tasks:[
+{title:"Перевір адресу",scene:"Тебе запросили проголосувати за знайому в конкурсі. Знайди підозрілий елемент на сторінці.",options:["Адреса сайту: school-stars-prize.example","Назва конкурсу: «Шкільний талант»","Зображення кубка біля заголовка"],correct:0,why:"Назва сайту не підтверджує, що це справжній організатор. Навіть красивій сторінці не можна довіряти без перевірки джерела."},
+{title:"Форма голосування",scene:"Сторінка раптом просить дані для «підтвердження голосу». Яке поле найочевидніше свідчить про небезпеку?",options:["Ім'я учасника конкурсу","Пароль від твого акаунта","Назва номінації"],correct:1,why:"Для голосування не потрібно повідомляти пароль. Це типова ознака спроби викрасти доступ до акаунта."},
+{title:"Що зробити далі?",scene:"Ти помітив підозрілі ознаки. Обери дію на екрані сайту.",options:["Відправити форму — раптом усе гаразд","Поділитися посиланням у класному чаті","Закрити сторінку й перевірити конкурс через офіційне джерело"],correct:2,why:"Не вводь дані та не поширюй підозріле посилання. Перевір інформацію на офіційному сайті чи через організаторів."}]},
+{icon:"📱",name:"Месенджер",tasks:[
+{title:"Незнайомець пише",scene:"Привіт! Я друг твого старшого брата. Скинь, будь ласка, свою геолокацію, я поряд 😉",options:["Ось де я зараз 📍","Не надсилатиму адресу. Перевірю, хто це, через рідних.","Зараз надішлю фото свого будинку."],correct:1,why:"Не передавай свою геолокацію незнайомцям, навіть якщо вони називаються друзями родини."},
+{title:"Незвичне прохання",scene:"Друг: «Дуже треба! Скинь мені код, який прийшов тобі SMS. Потім усе поясню!»",options:["Секундочку, зараз перешлю код.","Дай номер свого телефону, я продиктую.","Коди входу нікому не надсилаю. Перевірю, чи це справді ти."],correct:2,why:"Код підтвердження — секрет. Навіть акаунт друга могли зламати."},
+{title:"Підтримка в чаті",scene:"У групі хтось постійно висміює однокласника. Інші сміються й ставлять реакції.",options:["Це неприємно. Не підтримуватиму образи та звернуся до дорослого.","Поставлю смайлик, щоб не виділятися.","Перешлю скриншот іншим, щоб усі побачили."],correct:0,why:"Не приєднуйся до цькування. Збережи докази й попроси допомоги дорослого, якому довіряєш."}]},
+{icon:"⚙️",name:"Налаштування профілю",tasks:[
+{title:"Показувати точне місцеперебування",scene:"Твій профіль зараз відкритий для всіх. Увімкнена функція «Показувати мою точну геолокацію». Налаштуй її безпечно.",correct:1,why:"Точна геолокація не повинна бути доступною незнайомцям. Вимкни її для публічного профілю.",setting:"Публічна геолокація"},
+{title:"Показувати номер телефону",scene:"У профілі публічно відображається твій номер телефону. Обери безпечне налаштування.",correct:1,why:"Номер телефону — особисті дані. Не роби його відкритим для всіх.",setting:"Телефон бачать усі"},
+{title:"Публікувати фото друзів без згоди",scene:"Застосунок пропонує автоматично викладати фото з друзями у відкритий профіль. Зміни налаштування.",correct:1,why:"Перш ніж поширювати чужі фото, потрібно отримати дозвіл. Автоматичну публікацію краще вимкнути.",setting:"Автопублікація фото"}]}
+
 ];
 const tasks=units.flatMap((u,mi)=>u.tasks.map(t=>({...t,mi})));
 let index=0,score=0,answered=false;
@@ -79,11 +103,17 @@ units.forEach((unit,i)=>{const d=document.createElement("div");d.className="miss
 $("tag").textContent="Вправа "+(t.mi+1)+": "+u.name;
 $("question").textContent=t.title;
 $("situation").textContent=t.scene;
+$("situation").classList.toggle("hidden",t.mi===2||t.mi===3);
 $("feedback").className="feedback hidden";
 $("feedback").textContent="";
 $("next").classList.add("hidden");
-$("tip").textContent="Обери відповідь.";
+$("tip").textContent=t.mi===4?"Налаштуй перемикач і збережи зміни.":"Виконай дію на екрані.";
 $("choices").replaceChildren();
+if(t.mi===2)renderVote(t);
+else if(t.mi===3)renderChat(t);
+else if(t.mi===4)renderSettings(t);
+else{
+$("tip").textContent="Обери одну відповідь.";
 t.options.forEach((answer,i)=>{
 const b=document.createElement("button");b.className="choice";b.type="button";
 const num=document.createElement("span");num.className="num";num.textContent=String.fromCharCode(65+i);
@@ -91,6 +121,43 @@ const label=document.createElement("span");label.textContent=answer;
 b.append(num,label);b.addEventListener("click",()=>choose(i));$("choices").append(b);
 });
 }
+}
+function makeAction(text,i){
+const b=document.createElement("button");b.className="mock-action";b.type="button";b.textContent=text;b.addEventListener("click",()=>choose(i));return b;
+}
+function renderVote(t){
+const outer=document.createElement("div");outer.className="mock-browser";
+outer.innerHTML='<div class="browserbar"><span aria-hidden="true">🌐</span><div class="fake-url">https://school-stars-prize.example/vote</div></div><div class="fake-site"><div style="font-size:2.5rem">🏆</div><h3>Шкільний талант — 2026</h3><div class="sub">Підтримай учасницю! Голосування завершується за 05:00 хвилин</div><p><strong>Для голосування потрібно підтвердити особу</strong></p><div style="border:1px solid #c6cfde;background:white;border-radius:11px;padding:10px">Ім’я учасниці: Марта · Номінація: творчість<br>Для підтвердження голосу: пароль від акаунта</div></div>';
+const controls=document.createElement("div");controls.className="fake-controls";
+const hint=document.createElement("div");hint.className="settingnote";hint.textContent=["Натисни на елемент, який викликає найбільшу підозру:","Натисни на небезпечне поле у формі:","Що зробиш із цією сторінкою?"][index%3];controls.append(hint);
+t.options.forEach((x,i)=>controls.append(makeAction(x,i)));
+outer.append(controls);$("choices").append(outer);
+}
+function renderChat(t){
+const outer=document.createElement("div");outer.className="mock-chat";
+const head=document.createElement("div");head.className="chat-head";head.textContent="🟢 Повідомлення · "+(["Невідомий контакт","Контакт: друг","Група класу"][index%3]);
+const body=document.createElement("div");body.className="chat-body";
+const bubble=document.createElement("div");bubble.className="bubble";bubble.textContent=t.scene;body.append(bubble);
+const replies=document.createElement("div");replies.className="chat-replies";
+const hint=document.createElement("div");hint.className="settingnote";hint.textContent="Обери, що відповісти або як діяти:";
+replies.append(hint);t.options.forEach((x,i)=>replies.append(makeAction(x,i)));
+outer.append(head,body,replies);$("choices").append(outer);
+}
+function renderSettings(t){
+const outer=document.createElement("div");outer.className="mock-settings";
+const head=document.createElement("div");head.className="settings-head";head.textContent="⚙️ Налаштування приватності · Мій профіль";
+const body=document.createElement("div");body.className="settings-body";
+const line=document.createElement("div");line.className="switchline";
+const name=document.createElement("strong");name.textContent=t.setting;
+const sw=document.createElement("button");sw.className="switch";sw.type="button";sw.setAttribute("role","switch");sw.setAttribute("aria-checked","true");sw.setAttribute("aria-label",t.setting);
+let enabled=true;
+const status=document.createElement("div");status.className="settingnote";status.textContent="Зараз: увімкнено (видно всім)";
+sw.addEventListener("click",()=>{if(answered)return;enabled=!enabled;sw.classList.toggle("off",!enabled);sw.setAttribute("aria-checked",String(enabled));status.textContent=enabled?"Зараз: увімкнено (видно всім)":"Зараз: вимкнено";});
+line.append(name,sw);
+const save=document.createElement("button");save.className="mock-save";save.type="button";save.textContent="Зберегти налаштування";save.addEventListener("click",()=>{choose(enabled?0:1);});
+body.append(line,status,save);outer.append(head,body);$("choices").append(outer);
+}
+
 function choose(i){
 if(answered)return;
 answered=true;
@@ -98,8 +165,9 @@ const t=tasks[index],ok=i===t.correct;
 answers[index]={selected:i,correct:ok};
 timeByUnit[t.mi]+=Math.max(0,Math.min(300,Math.round((Date.now()-questionStarted)/1000)));
 if(ok){score++;$("score").textContent=score;}
-const all=[...$("choices").children];
-all.forEach((b,j)=>{b.disabled=true;if(j===t.correct)b.classList.add("right");if(j===i&&j!==t.correct)b.classList.add("wrong");});
+const buttons=[...$("choices").querySelectorAll("button.mock-action, button.choice")];
+buttons.forEach((b,j)=>{b.disabled=true;if(j===t.correct)b.classList.add("right");if(j===i&&j!==t.correct)b.classList.add("wrong");});
+$("choices").querySelectorAll("button.switch,button.mock-save").forEach(b=>b.disabled=true);
 const f=$("feedback");f.className="feedback"+(ok?"":" bad");f.replaceChildren();
 const title=document.createElement("strong");title.textContent=ok?"✅ Правильно! +1 бал":"💡 Спробуй запам'ятати правило";
 const desc=document.createElement("span");desc.textContent=t.why;f.append(title,desc);
