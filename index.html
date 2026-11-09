@@ -98,6 +98,22 @@ main{max-width:1000px;margin:auto;padding:22px 18px 70px}header{display:flex;ali
 .chat-option:hover{border-color:#6498cf;background:#f0f7ff}.chat-inline-feedback{margin-top:9px;padding:9px 11px;border-radius:11px;background:#e0f6eb;color:#1d6648;font-size:.85rem}.chat-inline-feedback.warning{background:#fff0db;color:#7e4d12}
 .chat-hintline{color:#637990;font-size:.78rem}
 @media(max-width:540px){.real-chat{font-size:14px}.real-chat-head{padding:10px}.chat-bubble{max-width:92%}.chat-taskbar{padding:11px}}
+
+/* Real-life app simulations: taxi, social profile, hiking post */
+.life-app{margin:20px auto;max-width:840px;background:#f8f9ff;color:#182440;border:1px solid #aebbd5;border-radius:23px;overflow:hidden;box-shadow:0 14px 37px #02071855}
+.life-app-top{display:flex;gap:14px;align-items:center;padding:17px 21px;background:linear-gradient(115deg,#eef2ff,#dfe9fb);border-bottom:1px solid #d4dded}
+.life-app-logo{font-size:2rem;background:white;border-radius:15px;width:58px;height:58px;display:grid;place-items:center;box-shadow:0 2px 9px #172b5423}
+.life-app-name{display:flex;flex-direction:column;gap:2px}.life-app-name strong{font-size:1.16rem}.life-app-name small{font-size:.76rem;color:#64738a}
+.life-app-content{padding:22px}.life-heading{font-size:1.32rem;color:#263d64;margin:2px 0 6px}.life-muted{color:#5e6e87;font-size:.9rem;margin:0 0 15px}
+.life-preview{display:flex;align-items:center;gap:17px;background:#e9f0fb;border:1px solid #d4e0f0;border-radius:17px;padding:17px 20px;margin:15px 0 20px;color:#31415e;font-weight:730}
+.life-preview span:first-child{font-size:2.6rem}.life-check{display:flex;align-items:center;gap:13px;background:white;border:1px solid #dce3ef;border-radius:13px;padding:14px 16px;margin:10px 0;cursor:pointer}
+.life-check input{width:23px;height:23px;flex-shrink:0;accent-color:#416cba;cursor:pointer}
+.life-check span{display:flex;flex-direction:column;gap:2px}.life-check strong{font-size:.94rem}.life-check small{font-size:.78rem;color:#66758b}
+.life-select-label{display:flex;flex-direction:column;gap:8px;font-weight:800;color:#30425f;font-size:.9rem;margin:15px 0}
+.life-select{background:#fff;color:#253b58;border:1px solid #c1cee0;padding:12px 14px;border-radius:11px;font:inherit;max-width:100%;width:100%}
+.life-save{display:block;background:#355fc4;color:white;border:0;padding:14px 20px;border-radius:13px;font:inherit;font-weight:840;cursor:pointer;margin:19px 0 8px}.life-save:hover{background:#254cae}.life-save:disabled{opacity:.6;cursor:default}
+.life-footnote{font-size:.75rem;color:#6a778b}.life-error{border-color:#d06073!important;background:#ffecee!important}
+@media(max-width:540px){.life-app-content{padding:15px}.life-app-name strong{font-size:1rem}.life-app-top{padding:12px}.life-check{padding:12px}}
 </style>
 </head>
 <body>
@@ -135,10 +151,10 @@ const units=[
 {title:"Незнайомець просить геолокацію",scene:"Привіт! Я друг твого брата. Скинь свою геолокацію, я поряд 😉",correct:0,why:"Незнайомцю не можна передавати місцеперебування. Для підозрілого контакту доречно поскаржитися на спам і заблокувати його. Реального блокування немає — це тренажер."},
 {title:"Друг просить код із SMS",scene:"Дуже терміново! Скинь мені код, який тобі щойно прийшов. Потім усе поясню!",correct:0,why:"Коди підтвердження не можна передавати навіть знайомим: акаунт друга могли зламати. Перевір прохання іншим відомим способом."},
 {title:"Образи у класному чаті",scene:"Та він знову нічого не зрозумів 😂😂😂\nДавайте його виключимо з групи!",correct:0,why:"Не підтримуй цькування: можна повідомити про образи, підтримати однокласника й звернутися до вчителя або дорослого. Не поширюй образливі повідомлення далі."}]},
-{icon:"⚙️",name:"Налаштування профілю",tasks:[
-{title:"Показувати точне місцеперебування",scene:"Твій профіль зараз відкритий для всіх. Увімкнена функція «Показувати мою точну геолокацію». Налаштуй її безпечно.",correct:1,why:"Точна геолокація не повинна бути доступною незнайомцям. Вимкни її для публічного профілю.",setting:"Публічна геолокація"},
-{title:"Показувати номер телефону",scene:"У профілі публічно відображається твій номер телефону. Обери безпечне налаштування.",correct:1,why:"Номер телефону — особисті дані. Не роби його відкритим для всіх.",setting:"Телефон бачать усі"},
-{title:"Публікувати фото друзів без згоди",scene:"Застосунок пропонує автоматично викладати фото з друзями у відкритий профіль. Зміни налаштування.",correct:1,why:"Перш ніж поширювати чужі фото, потрібно отримати дозвіл. Автоматичну публікацію краще вимкнути.",setting:"Автопублікація фото"}]}
+{icon:"⚙️",name:"Цифрові налаштування",tasks:[
+{title:"Замовляєш таксі",scene:"Ти налаштовуєш застосунок таксі для поїздки з дорослим. Застосунок запитує доступи. Надай лише те, що справді потрібно.",correct:1,why:"Для поїздки достатньо місця посадки та пункту призначення. Геолокацію можна дозволити лише під час користування застосунком. Контакти, мікрофон і фотогалерея для замовлення машини не потрібні."},
+{title:"Створюєш профіль в Instagram",scene:"Ти створюєш профіль для перегляду творчих робіт друзів. Виріши, що показувати іншим і хто бачитиме твій профіль.",correct:1,why:"Безпечніше використовувати нікнейм, не викладати домашню адресу, телефон і розклад, а профіль зробити приватним. Для користування Instagram діють вікові обмеження: тренажер не створює справжнього акаунта."},
+{title:"Публікуєш фото з походу",scene:"Ти повертаєшся з походу в гори й хочеш викласти фото з друзями. Підготуй допис так, щоб не розкривати зайвого й не порушувати чужу приватність.",correct:1,why:"Найбезпечніше публікувати після повернення, без точних координат і за згодою людей на фото. Обмеж коло глядачів перевіреними друзями."}]}
 
 ];
 const tasks=units.flatMap((u,mi)=>u.tasks.map(t=>({...t,mi})));
@@ -166,7 +182,7 @@ $("situation").classList.toggle("hidden",t.mi===2||t.mi===3);
 $("feedback").className="feedback hidden";
 $("feedback").textContent="";
 $("next").classList.add("hidden");
-$("tip").textContent=t.mi===4?"Налаштуй перемикач і збережи зміни.":"Виконай дію на екрані.";
+$("tip").textContent=t.mi===4?"Обери, які дані надати, що приховати та кому це показувати.":"Виконай дію на екрані.";
 $("choices").replaceChildren();
 if(t.mi===2)renderVote(t);
 else if(t.mi===3)renderChat(t);
@@ -375,18 +391,88 @@ outer.append(head,chatBody,bottom,taskbar);$("choices").append(outer);
 }
 
 function renderSettings(t){
-const outer=document.createElement("div");outer.className="mock-settings";
-const head=document.createElement("div");head.className="settings-head";head.textContent="⚙️ Налаштування приватності · Мій профіль";
-const body=document.createElement("div");body.className="settings-body";
-const line=document.createElement("div");line.className="switchline";
-const name=document.createElement("strong");name.textContent=t.setting;
-const sw=document.createElement("button");sw.className="switch";sw.type="button";sw.setAttribute("role","switch");sw.setAttribute("aria-checked","true");sw.setAttribute("aria-label",t.setting);
-let enabled=true;
-const status=document.createElement("div");status.className="settingnote";status.textContent="Зараз: увімкнено (видно всім)";
-sw.addEventListener("click",()=>{if(answered)return;enabled=!enabled;sw.classList.toggle("off",!enabled);sw.setAttribute("aria-checked",String(enabled));status.textContent=enabled?"Зараз: увімкнено (видно всім)":"Зараз: вимкнено";});
-line.append(name,sw);
-const save=document.createElement("button");save.className="mock-save";save.type="button";save.textContent="Зберегти налаштування";save.addEventListener("click",()=>{choose(enabled?0:1);});
-body.append(line,status,save);outer.append(head,body);$("choices").append(outer);
+const scenario=index%3;
+const wrap=document.createElement("div");wrap.className="life-app";
+const top=document.createElement("div");top.className="life-app-top";
+const appLogo=document.createElement("span");appLogo.className="life-app-logo";appLogo.textContent=["🚕","📸","🥾"][scenario];
+const appTitle=document.createElement("div");appTitle.className="life-app-name";
+appTitle.innerHTML="<strong></strong><small></small>";
+appTitle.querySelector("strong").textContent=["Міське Таксі · Доступи","Instagram · Налаштування профілю","Мій похід · Новий допис"][scenario];
+appTitle.querySelector("small").textContent="Навчальна імітація — дані не надсилаються";
+top.append(appLogo,appTitle);wrap.append(top);
+const content=document.createElement("div");content.className="life-app-content";
+const controls=[]; // {kind, value, expected, control}
+function heading(txt){const h=document.createElement("h3");h.className="life-heading";h.textContent=txt;content.append(h);}
+function paragraph(txt){const p=document.createElement("p");p.className="life-muted";p.textContent=txt;content.append(p);}
+function check(label,detail,initial,expected){
+const row=document.createElement("label");row.className="life-check";
+const box=document.createElement("input");box.type="checkbox";box.checked=initial;box.setAttribute("aria-label",label);
+const desc=document.createElement("span");desc.innerHTML="<strong></strong><small></small>";desc.querySelector("strong").textContent=label;desc.querySelector("small").textContent=detail;
+row.append(box,desc);content.append(row);controls.push({kind:"check",control:box,expected});return box;
+}
+function select(label,options,initial,expected){
+const row=document.createElement("label");row.className="life-select-label";row.textContent=label;
+const input=document.createElement("select");input.className="life-select";
+options.forEach(([value,title])=>{const op=document.createElement("option");op.value=value;op.textContent=title;input.append(op);});
+input.value=initial;row.append(input);content.append(row);controls.push({kind:"select",control:input,expected});return input;
+}
+function preview(emoji,label){
+const div=document.createElement("div");div.className="life-preview";
+const icon=document.createElement("span");icon.textContent=emoji;const txt=document.createElement("span");txt.textContent=label;
+div.append(icon,txt);content.append(div);
+}
+if(scenario===0){
+heading("Які дозволи надати застосунку?");
+paragraph("Поїздка з дорослим: від бібліотеки до вокзалу. Постав галочки тільки біля потрібних дозволів.");
+preview("🚖","Маршрут: Бібліотека → Вокзал");
+check("Місцеперебування під час використання","Щоб визначити місце посадки (можна вказати його вручну)",true,true);
+check("Доступ до всіх контактів","Читати телефонну книгу",true,false);
+check("Доступ до мікрофона","Слухати звук із мікрофона",true,false);
+check("Доступ до всіх фотографій","Перегляд галереї на пристрої",false,false);
+select("Коли застосунок може бачити геолокацію?",[["always","Завжди, навіть коли закритий"],["using","Лише під час користування"],["never","Ніколи (адресу введу вручну)"]],"always","using");
+}
+if(scenario===1){
+heading("Що показуватиметься в твоєму профілі?");
+paragraph("Для цього тренажера уяви, що вже маєш право користуватися соцмережею за її віковими правилами.");
+preview("🪩","@art_pumpkin · Малюю, читаю, люблю котів");
+check("Нікнейм і творчі інтереси","Нейтральна інформація без особистих контактів",true,true);
+check("Домашня адреса та номер телефону","Будуть видимі відвідувачам профілю",true,false);
+check("Назва школи й щоденний розклад","Де і коли тебе можна знайти",true,false);
+check("Публічний доступ до всіх фото","Будь-хто може переглядати дописи",true,false);
+select("Хто може переглядати твій профіль?",[["everyone","Усі користувачі"],["followers","Лише схвалені підписники"]],"everyone","followers");
+}
+if(scenario===2){
+heading("Підготуй публікацію");
+paragraph("На фото — ти й друзі. На телефоні збережено точне місце зйомки.");
+preview("🏞️","«Неймовірні гори й чудовий день!» · 3 фотографії");
+check("Згода всіх людей на фото","Ти запитав(ла), чи можна їх публікувати",false,true);
+check("Додати точні GPS-координати","Геомітка із точним місцем зйомки",true,false);
+check("Позначити домашню адресу збору","Написати, звідки починався маршрут",false,false);
+select("Коли опублікувати?",[["now","У дорозі, поки ми ще в горах"],["after","Після повернення додому"]],"now","after");
+select("Хто побачить допис?",[["public","Усі в інтернеті"],["friends","Лише перевірені друзі"]],"public","friends");
+}
+const save=document.createElement("button");save.type="button";save.className="life-save";save.textContent=["Підтвердити дозволи","Зберегти профіль","Опублікувати допис (імітація)"][scenario];
+const note=document.createElement("p");note.className="life-footnote";note.textContent="Це тренажер: жоден реальний дозвіл не змінюється, дописи й дані нікуди не надсилаються.";
+function finishSettings(){
+if(answered)return;
+answered=true;
+const errors=controls.filter(c=>c.kind==="check"?c.control.checked!==c.expected:c.control.value!==c.expected);
+const ok=errors.length===0;
+const task=tasks[index];
+answers[index]={selected:controls.map(c=>c.kind==="check"?c.control.checked:c.control.value),correct:ok};
+timeByUnit[task.mi]+=Math.max(0,Math.min(300,Math.round((Date.now()-questionStarted)/1000)));
+if(ok){score++;$("score").textContent=score;}
+controls.forEach(c=>{c.control.disabled=true;if((c.kind==="check"?c.control.checked!==c.expected:c.control.value!==c.expected))c.control.closest("label").classList.add("life-error");});
+save.disabled=true;
+const f=$("feedback");f.className="feedback"+(ok?"":" bad");f.replaceChildren();
+const title=document.createElement("strong");title.textContent=ok?"✅ Усе налаштовано безпечно! +1 бал":"💡 Є налаштування, які варто змінити";
+const desc=document.createElement("span");desc.textContent=task.why;
+f.append(title,desc);
+$("tip").textContent=ok?"Чудово! Продовжуй.":"Налаштування, що потребували виправлення, підсвічено.";
+$("next").textContent=index===tasks.length-1?"Переглянути результат":"Далі →";$("next").classList.remove("hidden");
+}
+save.addEventListener("click",finishSettings);
+content.append(save,note);wrap.append(content);$("choices").append(wrap);
 }
 
 function choose(i){
