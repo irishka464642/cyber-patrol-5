@@ -113,14 +113,14 @@ show("finish");
 }
 $("start").addEventListener("click",()=>{index=0;score=0;answers=[];show("game");render();});
 $("next").addEventListener("click",()=>{if(!answered)return;index++;if(index>=tasks.length)finish();else{render();$("question").scrollIntoView({block:"center",behavior:"smooth"});}});
-$("restart").addEventListener("click",()=>{index=0;score=0;show("game");render();});
+$("restart").addEventListener("click",()=>{index=0;score=0;answers=[];show("game");render();});
 
 function report(){
-const name=$("student").value.trim().replace(/\\s+/g," "),group=$("studentclass").value;
+const name=$("student").value.trim().replace(/\s+/g," "),group=$("studentclass").value;
 if(!name||!group){$("reportStatus").textContent="Спочатку введи ім’я та прізвище й обери клас.";return null;}
 const byUnit=units.map((u,mi)=>u.name+": "+answers.slice(mi*3,mi*3+3).filter(a=>a&&a.correct).length+"/3");
 const date=new Date().toLocaleDateString("uk-UA");
-return "Інформатика, 5 клас — Спілкування онлайн\\nУчень/учениця: "+name+"\\nКлас: "+group+"\\nДата: "+date+"\\nРезультат: "+score+"/15\\nОрієнтовно за 12-бальною шкалою: "+Math.max(1,Math.round(score*12/15))+" (остаточну оцінку визначає вчитель)\\n"+byUnit.join("\\n")+"\\nПравильних відповідей з першої спроби: "+score+" із 15.";
+return "Інформатика, 5 клас — Спілкування онлайн\nУчень/учениця: "+name+"\nКлас: "+group+"\nДата: "+date+"\nРезультат: "+score+"/15\nОрієнтовно за 12-бальною шкалою: "+Math.max(1,Math.round(score*12/15))+" (остаточну оцінку визначає вчитель)\n"+byUnit.join("\n")+"\nПравильних відповідей з першої спроби: "+score+" із 15.";
 }
 async function copyReport(text){
 try{await navigator.clipboard.writeText(text);$("reportStatus").textContent="Звіт скопійовано. Встав його в повідомлення вчителю.";}
