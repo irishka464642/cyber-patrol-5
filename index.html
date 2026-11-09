@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#131832">
+<title>Кіберпатруль — місія 5 класу</title>
+<style>
+:root{--bg:#10152e;--panel:#1b2444;--panel2:#273253;--white:#f4f7ff;--muted:#b7c5e3;--aqua:#4de1d3;--yellow:#ffca68;--pink:#ff74a0;--green:#7ae5a5}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 15% 12%,#243360 0,transparent 34%),radial-gradient(circle at 88% 4%,#3c2659 0,transparent 25%),var(--bg);color:var(--white);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100vh}
+main{max-width:1000px;margin:auto;padding:22px 18px 70px}header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:30px}.brand{font-weight:900;letter-spacing:.04em}.chip{background:#26345b;border:1px solid #45547d;border-radius:30px;padding:7px 14px;color:var(--aqua);font-weight:750;font-size:.84rem}
+.hero{display:grid;grid-template-columns:1fr auto;align-items:center;gap:16px}.eyebrow{text-transform:uppercase;color:var(--aqua);font-weight:850;letter-spacing:.16em;font-size:.8rem}h1{font-size:clamp(2.2rem,7vw,4.4rem);line-height:1.07;margin:10px 0 16px;letter-spacing:-.05em}h2{font-size:clamp(1.5rem,4vw,2.25rem);line-height:1.2;margin:8px 0 12px}.lead{color:var(--muted);max-width:620px;font-size:1.1rem}.mascot{font-size:clamp(70px,16vw,150px);filter:drop-shadow(0 14px 16px #0005);user-select:none}
+.card{background:linear-gradient(150deg,#202a4d,#1b2442);border:1px solid #415077;border-radius:25px;padding:clamp(18px,4vw,34px);box-shadow:0 16px 45px #050a1d55}.primary,.secondary,.choice{font:inherit;cursor:pointer;border-radius:15px;transition:transform .12s,background .12s;font-weight:800}.primary:hover,.secondary:hover,.choice:hover{transform:translateY(-2px)}.primary{background:var(--aqua);border:0;color:#10213c;padding:14px 24px}.secondary{background:transparent;border:1px solid #8494ba;color:var(--white);padding:13px 22px}.primary:focus-visible,.secondary:focus-visible,.choice:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}.primary:disabled,.choice:disabled{opacity:.65;cursor:default;transform:none}
+.statbox{display:flex;flex-wrap:wrap;gap:12px;margin:23px 0}.stat{background:#263458;border-radius:16px;padding:11px 17px;font-weight:750}.stat b{color:var(--yellow)}.progress{height:12px;background:#111931;border-radius:25px;overflow:hidden;border:1px solid #415077;margin:18px 0 28px}.progress>div{height:100%;width:0;background:linear-gradient(90deg,var(--aqua),var(--yellow));transition:width .3s}
+.sectiontag{color:var(--yellow);font-size:.85rem;letter-spacing:.1em;font-weight:900;text-transform:uppercase}.situation{margin:24px 0;background:#131c37;border:1px solid #425477;border-radius:19px;padding:19px 23px;font-size:1.12rem;white-space:pre-line}.choices{display:grid;gap:11px}.choice{background:#2b385d;border:2px solid transparent;color:var(--white);padding:15px 17px;text-align:left;display:flex;gap:13px;align-items:flex-start;line-height:1.4}.choice:hover:not(:disabled){background:#36466d}.choice.selected{border-color:var(--aqua);background:#274b5c}.choice.wrong{border-color:var(--pink);background:#59314d}.choice.right{border-color:var(--green);background:#245043}.choice .num{border-radius:9px;background:#ffffff19;color:var(--aqua);min-width:30px;display:inline-grid;place-items:center;font-size:.87rem}
+.feedback{margin-top:18px;padding:17px 19px;border-radius:16px;background:#172b3a;border:1px solid #378d80}.feedback.bad{background:#3b253e;border-color:#a94c7f}.feedback strong{display:block;margin-bottom:6px}.foot{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:21px}.hint{color:var(--muted);font-size:.93rem}.hidden{display:none!important}.missions{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin:25px 0}.mission{background:#273352;border-radius:14px;padding:10px 4px;text-align:center;color:var(--muted);font-size:.78rem;border:1px solid #435073}.mission .emoji{display:block;font-size:1.5rem}.mission.done{color:var(--aqua);border-color:var(--aqua)}.mission.current{color:var(--yellow);border-color:var(--yellow)}.finalscore{font-size:clamp(3rem,10vw,6rem);color:var(--aqua);font-weight:950;line-height:1;margin:20px 0}.finalbox{text-align:center}.result{color:var(--muted);font-size:1.1rem;margin-bottom:22px}footer{text-align:center;color:#aebbd5;font-size:.87rem;margin-top:35px}ul{padding-left:21px}li{margin:7px 0}
+@media(max-width:650px){.hero{grid-template-columns:1fr}.mascot{display:none}.missions{gap:5px}.mission{font-size:.66rem;padding:8px 2px}.mission .emoji{font-size:1.25rem}.card{border-radius:19px}.statbox{gap:7px}.stat{font-size:.9rem;padding:9px 11px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<main>
+<header><div class="brand">🛡️ КІБЕРПАТРУЛЬ <span style="color:var(--aqua)">/ 5 КЛАС</span></div><span class="chip">Місія: безпечний інтернет</span></header>
+<section id="intro">
+<div class="hero"><div><div class="eyebrow">Інтерактивний квест · 5 місій</div><h1>Твій чат.<br>Твої правила.<br><span style="color:var(--aqua)">Твоя безпека.</span></h1><p class="lead">Тебе прийняли до Кіберпатруля! Розплутай ситуації зі справжнього цифрового життя, навчись чемно спілкуватися та захищати себе в мережі.</p></div><div class="mascot" aria-hidden="true">🕵️‍♀️</div></div>
+<div class="card"><h2>🎯 Правила гри</h2><ul><li>5 місій, у кожній по 3 короткі ситуації.</li><li>Обирай <b>одну найкращу відповідь</b>. Після вибору отримуєш пояснення.</li><li>За правильну відповідь із першого разу — <b>1 бал</b>, максимум 15.</li><li>Помилятися можна: головне — зрозуміти правило.</li></ul><p class="hint">Не вводь ім'я, пароль чи інші персональні дані. Усі результати залишаються тільки на цьому екрані.</p><button class="primary" id="start">Почати місію 🚀</button></div>
+</section>
+<section id="game" class="hidden" aria-live="polite">
+<div class="statbox"><div class="stat">🎯 Завдання: <b id="counter">1 / 15</b></div><div class="stat">⭐ Бали: <b id="score">0</b></div><div class="stat">🏅 Місія: <b id="missionnum">1 / 5</b></div></div>
+<div class="progress" role="progressbar" aria-label="Прогрес квесту" aria-valuemin="0" aria-valuemax="15" aria-valuenow="0" id="progressbar"><div id="fill"></div></div>
+<div class="missions" id="missions"></div>
+<div class="card"><div class="sectiontag" id="tag"></div><h2 id="question"></h2><div class="situation" id="situation"></div><div class="choices" id="choices"></div><div class="feedback hidden" id="feedback" role="status"></div><div class="foot"><span class="hint" id="tip">Обери відповідь, щоб продовжити.</span><button class="primary hidden" id="next">Наступне завдання →</button></div></div>
+</section>
+<section id="finish" class="hidden"><div class="card finalbox"><div style="font-size:4rem">🏆</div><div class="eyebrow">Місію завершено!</div><h1>Кіберпатруль пишається тобою!</h1><div class="finalscore" id="finalscore"></div><p class="result" id="result"></p><p>Твоя суперсила — думати перед тим, як натиснути «Надіслати» чи відкрити посилання.</p><div class="foot" style="justify-content:center"><button class="primary" id="restart">Пройти ще раз ↻</button><button class="secondary" id="print">🖨️ Зберегти результат</button></div></div></section>
+<footer>Інформатика · 5 клас · Етикет спілкування та безпечне використання інтернету · Без реєстрації та збору даних</footer>
+</main>
+<script>
+"use strict";
+const units=[
+{icon:"💬",name:"Чат під контролем",tasks:[
+{title:"Жарт чи образа?",scene:"У класному чаті хтось написав: «Ти що, зовсім нічого не розумієш? 😂»",options:["Це точно смішно, можна написати ще гірше.","Попросити спілкуватися без образ, а якщо ситуація триває — звернутися до дорослого.","Викласти скриншот з ім'ям автора у відкриту групу."],correct:1,why:"Емодзі не робить образу прийнятною. Можна спокійно встановити межі й попросити підтримки."},
+{title:"ВЕЛИКІ ЛІТЕРИ",scene:"Денис написав однокласнику: «ТИ ЧОМУ НЕ ВІДПОВІДАЄШ???»",options:["Великі літери можуть сприйматися як крик. Краще написати спокійно.","Чим більше знаків оклику, тим ввічливіше.","Треба надіслати це повідомлення десять разів."],correct:0,why:"У листуванні тон не чути. Великі літери та багато знаків часто звучать різко."},
+{title:"Фото без дозволу",scene:"На перерві зробили кумедне фото однокласниці. Ти хочеш скинути його в загальний чат.",options:["Надішлю, адже фото кумедне.","Додам підпис з її адресою.","Спершу запитаю дозволу людини на фото."],correct:2,why:"Поважай приватність інших. Перед публікацією чужих фото потрібно отримати згоду."}]},
+{icon:"🧠",name:"Що відповіси?",tasks:[
+{title:"Незнайомець у повідомленнях",scene:"Незнайомий акаунт пише: «Привіт! Я друг твого брата. Скажи, де ти зараз?»",options:["Відразу напишу точну адресу.","Не повідомлятиму місцеперебування; покажу повідомлення дорослому, якому довіряю.","Надішлю фото свого будинку."],correct:1,why:"Невідомій людині не варто передавати адресу чи місцеперебування. Перевіряй особу через дорослих."},
+{title:"Сварка в групі",scene:"Двоє друзів посварилися в чаті, почали ображати одне одного.",options:["Приєднаюся, щоб підтримати когось образами.","Перешлю сварку в інші групи.","Запропоную припинити образи й обговорити проблему спокійно."],correct:2,why:"Мережевий етикет допомагає розв'язати конфлікти без приниження інших."},
+{title:"Повідомлення пізно ввечері",scene:"Однокласник не відповідає на твоє запитання о 23:30.",options:["Зачекаю до зручного часу: люди мають право не відповідати одразу.","Буду телефонувати, доки не відповість.","Напишу всім, що він мене ігнорує."],correct:0,why:"Поважай особистий час іншої людини. Не вимагай миттєвої відповіді."}]},
+{icon:"🎣",name:"Розпізнай пастку",tasks:[
+{title:"Безкоштовні ігрові монети",scene:"Повідомлення: «🎮 10 000 монет у грі! Тільки зараз! Увійди за паролем за цим посиланням»",options:["Перейду та введу пароль.","Не відкриватиму підозріле посилання й не вводитиму пароль.","Надішлю другу, нехай перевірить."],correct:1,why:"Обіцянки легких подарунків часто використовують для викрадення паролів. Не передавай посилання іншим."},
+{title:"Термінове прохання",scene:"Акаунт друга раптово пише: «Терміново перекинь гроші. Нікому не кажи!»",options:["Перевірю прохання іншим відомим способом і звернуся до дорослого.","Перекину гроші, бо це друг.","Напишу реквізити картки батьків."],correct:0,why:"Акаунти можуть зламати. Незвичне термінове прохання треба перевірити окремим каналом."},
+{title:"Підозрілий файл",scene:"У чат прийшов невідомий файл «Твої_оцінки_терміново.exe» від незнайомого акаунта.",options:["Запущу, щоб подивитися.","Перешлю всім, кому цікаво.","Не відкриватиму; повідомлю дорослого або вчителя."],correct:2,why:"Невідомі файли можуть містити шкідливі програми. Розширення .exe означає виконуваний файл."}]},
+{icon:"🔒",name:"Мої дані",tasks:[
+{title:"Що можна розповісти?",scene:"Ти знайомишся в ігровому чаті з новим гравцем. Яка інформація найменш ризикована?",options:["Мій домашній адрес і номер телефону.","Пароль від акаунта.","Мій улюблений жанр ігор."],correct:2,why:"Інтереси можна обговорювати без передачі адреси, телефону, паролів чи точного розкладу."},
+{title:"Пароль для друга",scene:"Друг каже: «Дай свій пароль на хвилинку, мені дуже треба!»",options:["Не передаватиму пароль навіть друзям.","Дам пароль, якщо пообіцяє нікому не казати.","Напишу пароль у класний чат."],correct:0,why:"Пароль — особистий секрет. Навіть дружба не вимагає доступу до чужого акаунта."},
+{title:"Геолокація на фото",scene:"Ти публікуєш фото біля свого будинку. Додаток пропонує додати точну геолокацію.",options:["Обов'язково додам точну адресу.","Вимкну точну геолокацію і перевірю, чи фото не розкриває приватні дані.","Додам номер квартири в опис."],correct:1,why:"Точне місцеперебування — приватна інформація. Краще не показувати його незнайомцям."}]},
+{icon:"🏅",name:"Фінальний виклик",tasks:[
+{title:"Кібербулінг",scene:"У чаті кілька учнів систематично висміюють однокласника. Що робити?",options:["Не підтримувати цькування, зберегти докази та звернутися до дорослого, якому довіряєш.","Поставити лайк, щоб не виділятися.","Створити ще один чат для жартів."],correct:0,why:"Повторювані приниження в інтернеті — серйозна проблема. Підтримка й допомога дорослих важливі."},
+{title:"Злам акаунта?",scene:"Тобі надійшов код входу, хоча ти не намагався увійти в акаунт. Потім незнайомець просить переслати код.",options:["Перешлю код, щоб людина перестала писати.","Викладу код у сторіс.","Нікому не повідомлю код; перевірю безпеку акаунта з дорослим."],correct:2,why:"Одноразові коди підтверджують вхід. Їх нікому не можна пересилати."},
+{title:"Суперсила Кіберпатруля",scene:"Перед тим як відправити повідомлення чи відкрити посилання, що найкраще зробити?",options:["Діяти швидко, щоб не втратити шанс.","Перевірити: це ввічливо, безпечно й не розкриває чужих або моїх даних?","Питати лише друзів, чи це модно."],correct:1,why:"Найкращий захист — зробити паузу, подумати про наслідки й обрати відповідальну дію."}]}
+];
+const tasks=units.flatMap((u,mi)=>u.tasks.map(t=>({...t,mi})));
+let index=0,score=0,answered=false;
+const $=id=>document.getElementById(id);
+function show(id){["intro","game","finish"].forEach(s=>$(s).classList.toggle("hidden",s!==id));window.scrollTo({top:0,behavior:"instant"});}
+function render(){
+answered=false;
+const t=tasks[index],u=units[t.mi];
+$("counter").textContent=(index+1)+" / "+tasks.length;
+$("score").textContent=score;
+$("missionnum").textContent=(t.mi+1)+" / "+units.length;
+$("progressbar").setAttribute("aria-valuenow",String(index));
+$("fill").style.width=(index/tasks.length*100)+"%";
+$("missions").replaceChildren();
+units.forEach((unit,i)=>{const d=document.createElement("div");d.className="mission "+(i<t.mi?"done":i===t.mi?"current":"");d.innerHTML='<span class="emoji">'+unit.icon+'</span>'+unit.name;$("missions").append(d);});
+$("tag").textContent="Місія "+(t.mi+1)+": "+u.name;
+$("question").textContent=t.title;
+$("situation").textContent=t.scene;
+$("feedback").className="feedback hidden";
+$("feedback").textContent="";
+$("next").classList.add("hidden");
+$("tip").textContent="Обери відповідь, щоб продовжити.";
+$("choices").replaceChildren();
+t.options.forEach((answer,i)=>{
+const b=document.createElement("button");b.className="choice";b.type="button";
+const num=document.createElement("span");num.className="num";num.textContent=String.fromCharCode(65+i);
+const label=document.createElement("span");label.textContent=answer;
+b.append(num,label);b.addEventListener("click",()=>choose(i));$("choices").append(b);
+});
+}
+function choose(i){
+if(answered)return;
+answered=true;
+const t=tasks[index],ok=i===t.correct;
+if(ok){score++;$("score").textContent=score;}
+const all=[...$("choices").children];
+all.forEach((b,j)=>{b.disabled=true;if(j===t.correct)b.classList.add("right");if(j===i&&j!==t.correct)b.classList.add("wrong");});
+const f=$("feedback");f.className="feedback"+(ok?"":" bad");f.replaceChildren();
+const title=document.createElement("strong");title.textContent=ok?"✅ Правильно! +1 бал":"💡 Спробуй запам'ятати правило";
+const desc=document.createElement("span");desc.textContent=t.why;f.append(title,desc);
+$("tip").textContent=ok?"Клас! Рухаємося далі.":"Правильну відповідь підсвічено зеленим.";
+$("next").textContent=index===tasks.length-1?"Побачити результат 🏆":"Далі →";
+$("next").classList.remove("hidden");
+}
+function finish(){
+$("finalscore").textContent=score+" / "+tasks.length;
+$("result").textContent=score===15?"Ідеально! Ти справжній експерт із кібербезпеки.":score>=11?"Чудовий результат! Ти добре орієнтуєшся в цифрових ситуаціях.":score>=7?"Хороший старт! Перечитай пояснення та спробуй ще раз.":"Ти вже знаєш більше! Пройди місії ще раз і потренуй безпечні рішення.";
+show("finish");
+}
+$("start").addEventListener("click",()=>{index=0;score=0;show("game");render();});
+$("next").addEventListener("click",()=>{if(!answered)return;index++;if(index>=tasks.length)finish();else{render();$("question").scrollIntoView({block:"center",behavior:"smooth"});}});
+$("restart").addEventListener("click",()=>{index=0;score=0;show("game");render();});
+$("print").addEventListener("click",()=>window.print());
+</script>
+</body></html>
