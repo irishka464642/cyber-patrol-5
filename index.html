@@ -17,6 +17,7 @@ main{max-width:1000px;margin:auto;padding:22px 18px 70px}header{display:flex;ali
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 .report{max-width:620px;margin:30px auto 0;text-align:left;background:#121c35;padding:20px;border-radius:18px;border:1px solid #3e5175}.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:18px 0}.fields label{font-weight:750;color:var(--muted);font-size:.9rem}.fields input,.fields select{display:block;width:100%;background:#263456;color:var(--white);border:1px solid #67779e;border-radius:12px;font:inherit;padding:12px;margin-top:7px}.breakdown{display:grid;gap:8px}.breakdown div{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid #415073;padding:7px 0}.breakdown strong{color:var(--aqua)}@media(max-width:480px){.fields{grid-template-columns:1fr}}@media print{body{background:white;color:black}header,.lead,#intro,#game,footer,.foot,.hint{display:none!important}.card,.report{box-shadow:none;border:1px solid #999;background:white;color:black}.result,.breakdown strong{color:black}.fields input,.fields select{color:black;background:white}.finalscore{color:black}}
 
+.finish-mark{font-size:3.8rem}.student-summary{background:#233355;border:1px solid #425b87;padding:14px 16px;border-radius:12px;font-weight:800;margin:13px 0 17px}.report-submit{text-align:center;padding:17px 0 3px}.report-submit button{width:100%;max-width:440px;padding:16px;font-size:1.02rem}.report-submit button:disabled{opacity:.65;cursor:not-allowed}.report-submit .hint{margin-top:12px}
 /* Interactive screen simulations */
 .mock-browser,.mock-chat,.mock-settings{border:1px solid #647598;border-radius:20px;background:#f5f8ff;color:#172344;overflow:hidden;margin:20px 0}
 .browserbar{padding:13px;background:#e1e8f6;display:flex;align-items:center;gap:10px;font-size:.86rem}
@@ -178,7 +179,7 @@ main{max-width:1000px;margin:auto;padding:22px 18px 70px}header{display:flex;ali
 <div class="missions" id="missions"></div>
 <div class="card"><div class="sectiontag" id="tag"></div><h2 id="question"></h2><div class="situation" id="situation"></div><div class="choices" id="choices"></div><div class="feedback hidden" id="feedback" role="status"></div><div class="foot"><span class="hint" id="tip">Обери відповідь.</span><button class="primary hidden" id="next">Наступне завдання →</button></div></div>
 </section>
-<section id="finish" class="hidden"><div class="card finalbox"><div style="font-size:4rem">✅</div><div class="eyebrow">Усі вправи виконано!</div><h1>Твій результат</h1><div class="finalscore" id="finalscore"></div><p class="result" id="result"></p><p>Перш ніж натиснути «Надіслати» або відкрити посилання, перевір: чи це безпечно та чи поважає інших.</p><div class="report"><h2 style="font-size:1.3rem">📋 Результат для вчителя</h2><p class="hint">Перевір дані та надішли результат учителю через шкільний чат або інший узгоджений канал. На сайті дані нікуди автоматично не надсилаються.</p><div id="studentSummary" class="hint"></div><div id="breakdown" class="breakdown"></div><p class="hint">Попередня самооцінка за шкалою 1–12 не замінює оцінювання вчителя.</p><div id="reportStatus" class="hint" role="status"></div><div id="autoSending" class="hidden"><button class="primary" id="sendResults">📨 Надіслати результати в журнал</button><p class="hint">Після надсилання вчитель має перевірити появу записів у таблиці. Копія звіту доступна нижче.</p></div><div class="foot" style="justify-content:center"><button class="primary" id="share">📤 Поділитися результатом</button><button class="secondary" id="copy">📋 Копіювати звіт</button><button class="secondary" id="print">🖨️ Друк / PDF</button></div></div><div class="foot" style="justify-content:center"><button class="secondary" id="restart">Пройти ще раз ↻</button></div></div></section>
+<section id="finish" class="hidden"><div class="card finalbox"><div class="finish-mark" aria-hidden="true">✅</div><div class="eyebrow">Усі вправи виконано!</div><h1>Твій результат</h1><div class="finalscore" id="finalscore"></div><p class="result" id="result"></p><div class="report"><h2 style="font-size:1.3rem">📋 Результат для вчителя</h2><p class="hint">Перевір свої дані й надішли результат безпосередньо в електронний журнал.</p><div id="studentSummary" class="student-summary"></div><div id="breakdown" class="breakdown"></div><div class="report-submit"><button class="primary" id="sendResults" type="button">📨 Надіслати результат учителю</button><p class="hint" id="reportStatus" role="status" aria-live="polite"></p></div></div><div class="foot" style="justify-content:center"><button class="secondary" id="restart">Пройти ще раз ↻</button></div></div></section>
 <footer>Інформатика · 5 клас · Етикет спілкування та безпечне використання інтернету · Без реєстрації та збору даних</footer>
 </main>
 <script>
@@ -651,7 +652,10 @@ const scores=units.map((u,mi)=>answers.slice(mi*3,mi*3+3).filter(a=>a&&a.correct
 $("breakdown").replaceChildren();units.forEach((u,i)=>{const row=document.createElement("div"),label=document.createElement("span"),v=document.createElement("strong");label.textContent=u.name;v.textContent=scores[i]+" / 3";row.append(label,v);$("breakdown").append(row);});
 $("reportStatus").textContent="";
 $("studentSummary").textContent=$("studentclass").value+" · група "+$("studentgroup").value+" · "+$("surname").value.trim()+" "+$("firstname").value.trim();
-$("autoSending").classList.toggle("hidden",!RESULTS_ENDPOINT);
+$("sendResults").disabled=!RESULTS_ENDPOINT;
+$("sendResults").textContent=RESULTS_ENDPOINT?"📨 Надіслати результат учителю":"📨 Очікуємо підключення журналу";
+$("reportStatus").textContent=RESULTS_ENDPOINT?"Натисни кнопку один раз після перевірки даних.":"Електронний журнал ще не підключено. Повідом учителя.";
+submitStarted=false;
 show("finish");
 }
 $("start").addEventListener("click",()=>{
@@ -664,35 +668,29 @@ $("restart").addEventListener("click",()=>{index=0;score=0;attempt++;answers=[];
 
 let submitStarted=false;
 $("sendResults").addEventListener("click",async()=>{
-if(submitStarted)return;
-const r=report();if(!r)return;
+if(submitStarted||!RESULTS_ENDPOINT)return;
+const schoolClass=$("studentclass").value,group=$("studentgroup").value;
+const surname=$("surname").value.trim(),firstname=$("firstname").value.trim();
+if(!schoolClass||!group||!surname||!firstname){
+$("reportStatus").textContent="Перевір дані учня: клас, групу, прізвище та ім’я.";return;
+}
 const scores=units.map((u,mi)=>answers.slice(mi*3,mi*3+3).filter(a=>a&&a.correct).length);
-const payload={schoolClass:$("studentclass").value,group:$("studentgroup").value,surname:$("surname").value.trim(),firstname:$("firstname").value.trim(),scores,times:timeByUnit,attempt};
-submitStarted=true;$("sendResults").disabled=true;$("reportStatus").textContent="Надсилаємо запис до журналу…";
+const payload={schoolClass,group,surname,firstname,scores,times:timeByUnit,attempt};
+submitStarted=true;
+$("sendResults").disabled=true;
+$("sendResults").textContent="Надсилаємо…";
+$("reportStatus").textContent="Передаємо результат до електронного журналу.";
 try{
 await fetch(RESULTS_ENDPOINT,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(payload)});
-$("reportStatus").textContent="Запит відправлено. Через обмеження Google Apps Script сайт не може підтвердити запис — учитель має перевірити таблицю.";
-}catch(err){submitStarted=false;$("sendResults").disabled=false;$("reportStatus").textContent="Надсилання не вдалося. Скористайся кнопкою «Копіювати звіт».";
+$("sendResults").textContent="✓ Запит надіслано";
+$("reportStatus").textContent="Запит відправлено. Запис у Google Таблиці має перевірити вчитель — браузер не отримує підтвердження від сервера.";
+}catch(error){
+submitStarted=false;
+$("sendResults").disabled=false;
+$("sendResults").textContent="↻ Повторити надсилання";
+$("reportStatus").textContent="Не вдалося передати результат. Перевір підключення до інтернету й спробуй ще раз.";
 }
 });
-function report(){
-const surname=$("surname").value.trim().replace(/\s+/g," "),firstname=$("firstname").value.trim().replace(/\s+/g," "),schoolClass=$("studentclass").value,group=$("studentgroup").value;
-if(!surname||!firstname||!schoolClass||!group){$("reportStatus").textContent="Не всі дані заповнено.";return null;}
-const byUnit=units.map((u,mi)=>u.name+": "+answers.slice(mi*3,mi*3+3).filter(a=>a&&a.correct).length+"/3");
-const date=new Date().toLocaleDateString("uk-UA");
-return "Інформатика, 5 клас — Спілкування онлайн\nКлас: "+schoolClass+"\nГрупа: "+group+"\nПрізвище: "+surname+"\nІм’я: "+firstname+"\nДата: "+date+"\nРезультат: "+score+"/15\n"+byUnit.join("\n")+"\nПравильних відповідей з першої спроби: "+score+" із 15.";
-}
-async function copyReport(text){
-try{await navigator.clipboard.writeText(text);$("reportStatus").textContent="Звіт скопійовано. Встав його в повідомлення вчителю.";}
-catch(e){$("reportStatus").textContent="Автоматичне копіювання не вдалося. Зроби скриншот екрана з результатом.";}
-}
-$("copy").addEventListener("click",()=>{const r=report();if(r)copyReport(r);});
-$("share").addEventListener("click",async()=>{
-const r=report();if(!r)return;
-if(navigator.share){try{await navigator.share({title:"Результат вправ з інформатики",text:r});$("reportStatus").textContent="Вибери шкільний чат або погоджений канал передачі.";return;}catch(e){if(e.name==="AbortError")return;}}
-await copyReport(r);
-});
-$("print").addEventListener("click",()=>{if(report())window.print();});
 
 </script>
 </body></html>
