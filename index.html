@@ -114,6 +114,55 @@ main{max-width:1000px;margin:auto;padding:22px 18px 70px}header{display:flex;ali
 .life-save{display:block;background:#355fc4;color:white;border:0;padding:14px 20px;border-radius:13px;font:inherit;font-weight:840;cursor:pointer;margin:19px 0 8px}.life-save:hover{background:#254cae}.life-save:disabled{opacity:.6;cursor:default}
 .life-footnote{font-size:.75rem;color:#6a778b}.life-error{border-color:#d06073!important;background:#ffecee!important}
 @media(max-width:540px){.life-app-content{padding:15px}.life-app-name strong{font-size:1rem}.life-app-top{padding:12px}.life-check{padding:12px}}
+
+/* Social media comment thread simulation */
+.threads-app{background:#fff;color:#171717;border:1px solid #dfdfe2;border-radius:22px;overflow:hidden;margin:18px auto;max-width:710px;font-size:15px;box-shadow:0 12px 32px #03071955}
+.threads-mast{display:flex;justify-content:space-between;align-items:center;padding:14px 23px;border-bottom:1px solid #ebebee;font-size:1.28rem;color:#131313}
+.threads-mast strong{font-size:1.14rem;letter-spacing:-.03em}
+.threads-original{padding:18px 23px;border-bottom:7px solid #f5f5f5}
+.threads-author,.threads-comment-top{display:flex;align-items:center;gap:11px;position:relative}
+.threads-avatar{width:43px;height:43px;border-radius:50%;display:grid;place-items:center;font-weight:900;color:white;flex:none;font-size:1.1rem}
+.avatar-violet{background:linear-gradient(135deg,#c76aab,#7651ca)}
+.avatar-orange{background:linear-gradient(135deg,#ffb248,#d45c46)}
+.avatar-purple{background:linear-gradient(135deg,#dcb5fa,#8168bb)}
+.avatar-teal{background:linear-gradient(135deg,#3ed1ba,#3475a2)}
+.avatar-pink{background:linear-gradient(135deg,#fc9fa5,#b75bbb)}
+.avatar-blue{background:linear-gradient(135deg,#659fe4,#394dc1)}
+.threads-identity{display:flex;flex:1;flex-direction:column;min-width:0;gap:1px}
+.threads-identity strong{font-size:.91rem;color:#181818}.threads-identity small{color:#8a8a94;font-size:.76rem}
+.threads-dots-muted{font-size:1.5rem;color:#555}
+.threads-post-text{white-space:pre-line;font-size:1rem;line-height:1.55;margin:15px 0 14px;color:#222}
+.threads-metrics{color:#74747b;font-size:.85rem;letter-spacing:.03em}
+.threads-divider{padding:12px 23px;border-bottom:1px solid #ededf0;color:#67676e;font-size:.85rem;font-weight:740}
+.threads-comment{padding:17px 23px 13px;border-bottom:1px solid #ececf0;position:relative}
+.threads-comment-text{margin:10px 0 9px 55px;line-height:1.5;white-space:pre-line;color:#242424}
+.threads-more{border:0;background:transparent;font-size:1.48rem;letter-spacing:2px;color:#565660;cursor:pointer;padding:6px;border-radius:9px;min-width:40px}
+.threads-more:hover{background:#efeff3}
+.threads-popup{position:absolute;z-index:4;right:1px;top:41px;min-width:235px;border:1px solid #dedee5;background:white;border-radius:13px;box-shadow:0 9px 32px #17172738;overflow:hidden}
+.threads-popup.hidden{display:none}
+.threads-popup button{display:block;border:0;border-bottom:1px solid #eeeef2;background:#fff;text-align:left;width:100%;padding:14px;font:inherit;color:#222;cursor:pointer}
+.threads-popup button:hover{background:#f5f4f7}
+.threads-reactions{display:flex;gap:17px;margin:9px 0 0 55px;align-items:center;color:#797980;font-size:.8rem}
+.threads-reactions button{background:none;border:0;color:inherit;font:inherit;cursor:pointer;padding:3px}
+.threads-reactions button:disabled{opacity:.75;cursor:default}
+.threads-dimmed{opacity:.35}
+.threads-report-note{display:none;margin:13px 23px;background:#eaf8f0;border:1px solid #b5ddc7;color:#1a6044;border-radius:10px;padding:11px;font-size:.83rem}
+.threads-report-note.show{display:block}
+.threads-my-reply{background:#f9fbff}
+.threads-composer{margin:17px 21px;padding:17px;background:#f9f9fb;border:1px solid #e1e1e7;border-radius:15px}
+.threads-composer-title{display:flex;align-items:center;gap:11px}.threads-composer-title div{display:flex;flex-direction:column}.threads-composer-title strong{color:#222}.threads-composer-title small{font-size:.73rem;color:#73737a}
+.threads-composer textarea{display:block;width:100%;margin:12px 0;border:1px solid #d9d9df;border-radius:12px;padding:12px;font:inherit;resize:none;color:#25252a;background:#fff}
+.threads-reply-choices{display:grid;gap:7px}
+.threads-reply-option{text-align:left;border:1px solid #d5d5df;border-radius:10px;background:white;padding:10px 12px;font:inherit;font-size:.82rem;color:#333;cursor:pointer}
+.threads-reply-option:hover,.threads-reply-option.active{border-color:#8883ce;background:#f0effe}
+.threads-send{margin-top:12px;border:0;background:#202020;color:white;border-radius:28px;font:inherit;font-weight:750;padding:10px 18px;cursor:pointer}
+.threads-send:disabled{opacity:.35;cursor:not-allowed}
+.threads-guidance{background:#f5f7fb;padding:16px 22px;border-top:1px solid #dedfe6;color:#273451;font-size:.87rem}
+.threads-progress{margin:8px 0;font-weight:800;color:#426281}
+.threads-live:not(:empty){padding:9px 12px;margin:9px 0;border-radius:10px;background:#e7f5ec;color:#236549;font-size:.84rem}
+.threads-live.warning{background:#fff0e5;color:#8a4c2a}
+.threads-note{font-size:.73rem;color:#77808f;margin-top:8px}
+@media(max-width:530px){.threads-original,.threads-comment{padding:13px 12px}.threads-comment-text,.threads-reactions{margin-left:0}.threads-composer{margin:12px;padding:12px}.threads-guidance{padding:13px}.threads-mast{padding:12px}}
 </style>
 </head>
 <body>
@@ -150,7 +199,7 @@ const units=[
 {icon:"📱",name:"Месенджер",tasks:[
 {title:"Незнайомець просить геолокацію",scene:"Привіт! Я друг твого брата. Скинь свою геолокацію, я поряд 😉",correct:0,why:"Незнайомцю не можна передавати місцеперебування. Для підозрілого контакту доречно поскаржитися на спам і заблокувати його. Реального блокування немає — це тренажер."},
 {title:"Друг просить код із SMS",scene:"Дуже терміново! Скинь мені код, який тобі щойно прийшов. Потім усе поясню!",correct:0,why:"Коди підтвердження не можна передавати навіть знайомим: акаунт друга могли зламати. Перевір прохання іншим відомим способом."},
-{title:"Образи у класному чаті",scene:"Та він знову нічого не зрозумів 😂😂😂\nДавайте його виключимо з групи!",correct:0,why:"Не підтримуй цькування: можна повідомити про образи, підтримати однокласника й звернутися до вчителя або дорослого. Не поширюй образливі повідомлення далі."}]},
+{title:"Хейт у коментарях Threads",scene:"Авторка просить пояснити, за що можна отримувати Мрійки та як їх використовувати. Натомість у коментарях з’являються насмішки.",correct:0,why:"Коли людина просить допомоги, не варто висміювати її за запитання. Можна поскаржитися на образливий коментар і написати ввічливу підтримку, не вступаючи в сварку."}]},
 {icon:"⚙️",name:"Цифрові налаштування",tasks:[
 {title:"Замовляєш таксі",scene:"Ти налаштовуєш застосунок таксі для поїздки з дорослим. Застосунок запитує доступи. Надай лише те, що справді потрібно.",correct:1,why:"Для автоматичного визначення місця посадки достатньо доступу до геолокації лише під час користування застосунком. Місце посадки також можна вказати вручну. Контакти, мікрофон і фотогалерея для замовлення машини не потрібні."},
 {title:"Створюєш профіль в Instagram",scene:"Ти створюєш профіль для перегляду творчих робіт друзів. Виріши, що показувати іншим і хто бачитиме твій профіль.",correct:1,why:"Безпечніше використовувати нікнейм, не викладати домашню адресу, телефон і розклад, а профіль зробити приватним. Для користування Instagram діють вікові обмеження: тренажер не створює справжнього акаунта."},
@@ -182,7 +231,7 @@ $("situation").classList.toggle("hidden",t.mi===2||t.mi===3);
 $("feedback").className="feedback hidden";
 $("feedback").textContent="";
 $("next").classList.add("hidden");
-$("tip").textContent=t.mi===4?"Обери, які дані надати, що приховати та кому це показувати.":"Виконай дію на екрані.";
+$("tip").textContent=t.mi===4?"Обери, які дані надати, що приховати та кому це показувати.":t.mi===3&&index%3===2?"Досліди коментарі та скористайся інструментами гілки.":"Виконай дію на екрані.";
 $("choices").replaceChildren();
 if(t.mi===2)renderVote(t);
 else if(t.mi===3)renderChat(t);
@@ -315,9 +364,10 @@ $("tip").textContent=ok?"Добре! Номер телефону й пароль
 $("next").textContent="Далі →";$("next").classList.remove("hidden");
 }
 function renderChat(t){
-const scenario=index%3,required=scenario===0?["report","block"]:scenario===1?["safe"]:["report","support"];
+const scenario=index%3;if(scenario===2){renderThreads(t);return;}
+const required=scenario===0?["report","block"]:scenario===1?["safe"]:["report","support"];
 const done=new Set();let hadMistake=false;
-const contacts=["Невідомий контакт","Максим","Чат 5-Б"];const avatars=["?","М","5"];
+const contacts=["Невідомий контакт","Максим","Чат"];const avatars=["?","М","5"];
 const outer=document.createElement("div");outer.className="real-chat";
 const head=document.createElement("div");head.className="real-chat-head";
 const back=document.createElement("span");back.className="chat-back";back.textContent="‹";
@@ -346,7 +396,7 @@ const send=document.createElement("button");send.type="button";send.className="c
 bottom.append(clip,entry,send);
 const taskbar=document.createElement("div");taskbar.className="chat-taskbar";
 const hint=document.createElement("div");hint.className="chat-instruction";
-hint.textContent=["Захисти себе: скористайся меню ⋮, щоб поскаржитися та заблокувати незнайомця.","Обери, як безпечно відповісти на прохання про код.","Допоможи однокласнику: поскаржся на образи й напиши підтримку."][scenario];
+hint.textContent=["Захисти себе: скористайся меню ⋮, щоб поскаржитися та заблокувати незнайомця.","Обери, як безпечно відповісти на прохання про код."][scenario];
 const tracker=document.createElement("div");tracker.className="chat-tracker";
 const options=document.createElement("div");options.className="chat-option-list";
 function updateTracker(){tracker.textContent="Виконано безпечних дій: "+done.size+" / "+required.length;}
@@ -388,6 +438,108 @@ else revealOptions();
 taskbar.append(options);
 updateTracker();
 outer.append(head,chatBody,bottom,taskbar);$("choices").append(outer);
+}
+
+function renderThreads(t){
+const outer=document.createElement("div");outer.className="threads-app";
+const mast=document.createElement("div");mast.className="threads-mast";mast.innerHTML='<span>‹</span><strong>𝕋 <span style="font-family:system-ui">Threads</span></strong><span>⌕</span>';outer.append(mast);
+const post=document.createElement("div");post.className="threads-original";
+const author=document.createElement("div");author.className="threads-author";
+author.innerHTML='<span class="threads-avatar avatar-violet">М</span><div class="threads-identity"><strong>@marta.study</strong><small>3 год · Авторка допису</small></div><span class="threads-dots-muted">···</span>';
+const body=document.createElement("div");body.className="threads-post-text";body.textContent="Хтось може пояснити, як працює гейміфікація у «Мрії»? 🌱\nЗа що можна отримувати Мрійки та на що їх витрачати? Не дуже розібралася, буду вдячна за пояснення 🙏";
+const metrics=document.createElement("div");metrics.className="threads-metrics";metrics.textContent="♡ 86    ◯ 24    ↗ 7";
+post.append(author,body,metrics);outer.append(post);
+const divider=document.createElement("div");divider.className="threads-divider";divider.textContent="Відповіді · Найновіші";outer.append(divider);
+const comments=document.createElement("div");comments.className="threads-comments";outer.append(comments);
+const feedback=document.createElement("div");feedback.className="threads-live";feedback.setAttribute("role","status");
+const state={reported:false,supported:false,mistake:false,finished:false};
+const commentsData=[
+{handle:"@artem_fast",avatar:"А",color:"orange",time:"2 год",message:"Ти досі читати не вмієш? 🤦 Там же все елементарно просто.",toxic:true,likes:14},
+{handle:"@violet.cat",avatar:"V",color:"purple",time:"1 год",message:"Серйозно? Там навіть дитина розбереться, якщо хоч трохи подумати.",toxic:true,likes:6},
+{handle:"@oleh.help",avatar:"О",color:"teal",time:"48 хв",message:"Людина просто запитала. Можна пояснити нормально, без образ.",toxic:false,likes:31},
+{handle:"@fox.memes",avatar:"🦊",color:"pink",time:"31 хв",message:"Може, ще домашку за тебе зробити? 😂",toxic:true,likes:4}
+];
+const reportNote=document.createElement("div");reportNote.className="threads-report-note";
+function toast(message,bad=false){feedback.textContent=message;feedback.classList.toggle("warning",bad);}
+function finishIfReady(){
+if(!state.reported||!state.supported||state.finished)return;
+state.finished=true;answered=true;
+const ok=!state.mistake;answers[index]={selected:["report","support"],correct:ok};
+timeByUnit[t.mi]+=Math.max(0,Math.min(300,Math.round((Date.now()-questionStarted)/1000)));
+if(ok){score++;$("score").textContent=score;}
+outer.querySelectorAll("button").forEach(b=>b.disabled=true);
+const f=$("feedback");f.className="feedback"+(ok?"":" bad");f.replaceChildren();
+const label=document.createElement("strong");label.textContent=ok?"✅ Обидві дії виконано! +1 бал":"💡 Розберімо ситуацію";
+const explain=document.createElement("span");explain.textContent=t.why;f.append(label,explain);
+$("tip").textContent="На справжній платформі скарги розглядають модератори.";
+$("next").textContent="Далі →";$("next").classList.remove("hidden");
+}
+function setReported(handle){
+if(state.finished)return;
+state.reported=true;reportNote.textContent="🚩 Ви поскаржилися на образливий коментар "+handle+" (симуляція).";
+reportNote.classList.add("show");updateProgress();finishIfReady();
+}
+const actionRows=[];
+commentsData.forEach((c,i)=>{
+const card=document.createElement("article");card.className="threads-comment";
+const row=document.createElement("div");row.className="threads-comment-top";
+const avatar=document.createElement("span");avatar.className="threads-avatar avatar-"+c.color;avatar.textContent=c.avatar;
+const who=document.createElement("div");who.className="threads-identity";const n=document.createElement("strong");n.textContent=c.handle;const time=document.createElement("small");time.textContent=c.time;who.append(n,time);
+const menuButton=document.createElement("button");menuButton.className="threads-more";menuButton.textContent="···";menuButton.type="button";menuButton.setAttribute("aria-label","Дії з коментарем "+c.handle);
+const menu=document.createElement("div");menu.className="threads-popup hidden";
+const flag=document.createElement("button");flag.type="button";flag.textContent="🚩 Поскаржитися на коментар";
+flag.addEventListener("click",()=>{menu.classList.add("hidden");if(c.toxic){setReported(c.handle);}else{state.mistake=true;toast("Цей коментар підтримує авторку. Обери справді образливий коментар.",true);}});
+const hide=document.createElement("button");hide.type="button";hide.textContent="🙈 Приховати коментар";
+hide.addEventListener("click",()=>{menu.classList.add("hidden");card.classList.add("threads-dimmed");toast("Коментар приховано лише в цій симуляції. Для завершення потрібно також поскаржитися на хейт.");});
+menu.append(flag,hide);
+menuButton.addEventListener("click",()=>{if(state.finished)return;actionRows.forEach(m=>{if(m!==menu)m.classList.add("hidden");});menu.classList.toggle("hidden");});
+actionRows.push(menu);
+row.append(avatar,who,menuButton,menu);
+const message=document.createElement("p");message.className="threads-comment-text";message.textContent=c.message;
+const react=document.createElement("div");react.className="threads-reactions";
+const heart=document.createElement("button");heart.type="button";heart.textContent="♡  "+c.likes;heart.setAttribute("aria-label","Вподобати коментар "+c.handle);
+heart.addEventListener("click",()=>{if(state.finished)return;heart.textContent="♥  "+(c.likes+1);heart.disabled=true;if(c.toxic){state.mistake=true;toast("Ти поставив(ла) вподобайку образливому коментарю. Це може підтримати хейт.",true);}else toast("Ти підтримав(ла) ввічливий коментар.");});
+const replyIcon=document.createElement("span");replyIcon.textContent="◯  Відповісти";react.append(heart,replyIcon);
+card.append(row,message,react);comments.append(card);
+});
+outer.append(reportNote);
+const composer=document.createElement("div");composer.className="threads-composer";
+const title=document.createElement("div");title.className="threads-composer-title";title.innerHTML='<span class="threads-avatar avatar-blue">Я</span><div><strong>Додати відповідь</strong><small>Обери фразу, щоб вона з’явилася в гілці</small></div>';
+const input=document.createElement("textarea");input.rows=2;input.readOnly=true;input.placeholder="Написати відповідь авторці...";
+input.setAttribute("aria-label","Текст відповіді, обраної нижче");
+const send=document.createElement("button");send.type="button";send.className="threads-send";send.textContent="Опублікувати відповідь";send.disabled=true;
+const replyChoices=document.createElement("div");replyChoices.className="threads-reply-choices";
+const candidates=[
+{message:"Це нормальне запитання! Можна пояснити без насмішок. Спробуй подивитися підказки в самій «Мрії» 💜",safe:true},
+{message:"Та ти справді нічого не розумієш, навіщо взагалі питати 🙄",safe:false},
+{message:"Тут краще спокійно пояснити, а не ображати людину. Запитувати — нормально.",safe:true}
+];
+let selected=null;const optionButtons=[];
+candidates.forEach((c,i)=>{
+const b=document.createElement("button");b.type="button";b.className="threads-reply-option";b.textContent=c.message;
+b.addEventListener("click",()=>{if(state.finished)return;selected=i;input.value=c.message;send.disabled=false;optionButtons.forEach(x=>x.classList.remove("active"));b.classList.add("active");});
+optionButtons.push(b);replyChoices.append(b);
+});
+send.addEventListener("click",()=>{
+if(state.finished||selected===null)return;
+const picked=candidates[selected];
+const card=document.createElement("article");card.className="threads-comment threads-my-reply";
+const line=document.createElement("div");line.className="threads-comment-top";
+const ava=document.createElement("span");ava.className="threads-avatar avatar-blue";ava.textContent="Я";
+const id=document.createElement("div");id.className="threads-identity";id.innerHTML="<strong>@you</strong><small>щойно</small>";
+line.append(ava,id);const p=document.createElement("p");p.className="threads-comment-text";p.textContent=picked.message;card.append(line,p);comments.append(card);
+if(picked.safe){state.supported=true;toast("💬 Підтримувальну відповідь опубліковано (симуляція).");}else{state.mistake=true;toast("Твоя відповідь теж ображає авторку. Обери коректну фразу й спробуй іще раз.",true);}
+selected=null;input.value="";send.disabled=true;optionButtons.forEach(x=>x.classList.remove("active"));updateProgress();finishIfReady();
+});
+composer.append(title,input,replyChoices,send);outer.append(composer);
+const footer=document.createElement("div");footer.className="threads-guidance";
+const instruct=document.createElement("strong");instruct.textContent="Завдання: поскаржся на хейт через ··· біля коментаря та підтримай авторку своєю відповіддю.";
+const progress=document.createElement("div");progress.className="threads-progress";
+function updateProgress(){progress.textContent=(state.reported?"✅":"◯")+" Скарга на хейт     "+(state.supported?"✅":"◯")+" Підтримка авторки";}
+updateProgress();
+const note=document.createElement("div");note.className="threads-note";note.textContent="Навчальна імітація: жоден коментар, вподобайка чи скарга не надсилається в Threads.";
+footer.append(instruct,progress,feedback,note);outer.append(footer);
+$("choices").append(outer);
 }
 
 function renderSettings(t){
