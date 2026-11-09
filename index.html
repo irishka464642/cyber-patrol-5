@@ -39,6 +39,44 @@ main{max-width:1000px;margin:auto;padding:22px 18px 70px}header{display:flex;ali
 .switch.off{background:#7d8ca6}.switch.off::after{left:4px}
 .settingnote{color:#67758e;font-size:.86rem;padding:12px 0}.mock-save{background:#344ac0;border:0;border-radius:12px;padding:13px 21px;font:inherit;font-weight:850;color:white;cursor:pointer}
 .mock-save:disabled{opacity:.6}
+
+/* Halloween contest mock website: no data is collected from its form */
+.contest{margin:19px 0;border-radius:22px;overflow:hidden;background:#140e23;color:#fff0e3;border:1px solid #754b7b;box-shadow:0 13px 38px #05091988}
+.contest-browser{display:flex;align-items:center;gap:9px;background:#eeeaf6;color:#5b5b71;padding:10px 14px;font-size:.8rem}
+.contest-dots{font-size:1.2rem;color:#d36c7f;letter-spacing:3px}
+.contest-address{overflow-wrap:anywhere;flex:1;background:white;border:1px solid #d5cfde;border-radius:12px;padding:7px 11px;text-align:left;font-weight:650;color:#403c59}
+.contest-nav{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 20px;background:#251632}
+.contest-logo{font-size:1.05rem;font-weight:950;letter-spacing:.015em}
+.contest-small{font-size:.76rem;color:#dbc4db}
+.contest-hero{text-align:center;padding:35px 18px 24px;background:radial-gradient(circle at 50% -30%,#724061 0%,transparent 70%),linear-gradient(135deg,#281230,#100e1e)}
+.contest-kicker{display:inline-block;font-weight:800;font-size:.77rem;color:#facd82;letter-spacing:.13em;text-transform:uppercase}
+.contest-heading{font-size:clamp(1.6rem,4vw,3rem);font-weight:950;line-height:1.15;margin:9px 0;color:#ffd9b1}
+.contest-hero p{color:#e3c9db;margin:8px auto;max-width:510px}
+.contest-tags{display:flex;justify-content:center;flex-wrap:wrap;gap:9px;margin:18px 0 0}
+.contest-tags span{border:1px solid #a37080;background:#ffffff13;border-radius:24px;padding:6px 11px;font-size:.75rem;color:#ffdbb5}
+.contest-section{padding:21px;background:#1c1427}.contest-section h3{font-size:1.25rem;margin:4px 0 15px}
+.contest-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.contest-entry{overflow:hidden;background:#fff9f3;border-radius:16px;color:#30223a;box-shadow:0 6px 17px #06031355}
+.contest-entry img{display:block;width:100%;height:175px;object-fit:cover;background:#58405a}
+.contest-fallback{display:none;height:175px;align-items:center;justify-content:center;font-size:4.5rem;background:linear-gradient(135deg,#794357,#e37c38)}
+.contest-entry .entry-text{padding:13px}.contest-entry h4{font-size:1rem;margin:0 0 5px;color:#33223a}
+.contest-entry p{font-size:.8rem;color:#756778;margin:0 0 12px}
+.contest-vote{border:0;border-radius:11px;background:#ff923b;color:#2e1836;font:inherit;font-weight:900;padding:10px 12px;width:100%;cursor:pointer}
+.contest-vote:hover{background:#ffc278}.contest-vote:disabled{opacity:.65;cursor:default}
+.contest-bottom{font-size:.76rem;color:#cbb9d4;padding:17px 20px;text-align:center;background:#261a31}
+.contest-scrim{position:relative;background:#100a1dcc;padding:22px 15px;border-top:2px solid #f69b50}
+.contest-modal{max-width:520px;margin:auto;background:#fffaf6;color:#2d223a;padding:23px;border-radius:18px;box-shadow:0 16px 40px #0007}
+.contest-modal h3{font-size:1.4rem;margin:0 0 6px}.contest-modal p{font-size:.88rem;color:#695d75}
+.contest-field{display:block;text-align:left;font-size:.83rem;font-weight:760;color:#403754;margin-top:11px}
+.contest-field input{margin-top:5px;display:block;width:100%;background:#f1ebf4;border:1px solid #d4cbd8;border-radius:9px;padding:11px;color:#655d6a;font:inherit}
+.contest-review{background:#fff0dc;border:1px solid #ffbd82;border-radius:14px;padding:15px;margin-top:15px}
+.contest-review p{color:#493248;margin:3px 0 12px}
+.contest-actions{display:grid;gap:9px;margin-top:14px}
+.contest-choice{border:1px solid #afa4b7;border-radius:11px;background:#f5f0fb;padding:12px;text-align:left;color:#2e2237;font:inherit;font-weight:720;cursor:pointer}
+.contest-choice:hover{background:#e6d6ed}.contest-choice.right{background:#ddf6e8;border-color:#248258}.contest-choice.wrong{background:#fce2e5;border-color:#ae425b}
+.contest-note{text-align:center;color:#e8bacc;font-size:.77rem;margin-top:15px}
+@media(max-width:540px){.contest-grid{gap:9px}.contest-section{padding:14px}.contest-entry img,.contest-fallback{height:120px}.contest-entry .entry-text{padding:10px}.contest-entry h4{font-size:.9rem}.contest-entry p{font-size:.7rem}.contest-vote{font-size:.83rem;padding:9px 5px}.contest-nav{padding:12px}.contest-heading{font-size:1.9rem}}
+
 </style>
 </head>
 <body>
@@ -46,7 +84,7 @@ main{max-width:1000px;margin:auto;padding:22px 18px 70px}header{display:flex;ali
 <header><div class="brand">💬 СПІЛКУВАННЯ ОНЛАЙН <span style="color:var(--aqua)">/ 5 КЛАС</span></div><span class="chip">Практика онлайн-безпеки</span></header>
 <section id="intro">
 <div class="hero"><div><div class="eyebrow">Інтерактивна практика · 5 вправ</div><h1>Пиши ввічливо.<br>Спілкуйся безпечно.<br><span style="color:var(--aqua)">Думай перед кліком.</span></h1><p class="lead">Розбери ситуації зі шкільних чатів, онлайн-ігор і месенджерів. Обирай рішення та дізнавайся, як захистити себе й поважати інших.</p></div><div class="mascot" aria-hidden="true">💬</div></div>
-<div class="card"><h2>Як виконувати вправи</h2><ul><li>5 різних вправ: короткі запитання, фейкова сторінка голосування, чат і налаштування приватності.</li><li>На екранах треба не лише відповідати, а й натискати елементи та змінювати налаштування.</li><li>За правильну відповідь із першого разу — <b>1 бал</b>, максимум 15.</li><li>Помилки — частина навчання: після кожної відповіді є пояснення.</li></ul><div class="student-form"><h2 style="font-size:1.3rem">Твої дані</h2><p class="hint">Заповни перед початком. Дані потрібні, щоб учитель міг визначити, чий це результат. Паролі й контакти не вводь.</p><div class="fields student-fields"><label>Клас<select id="studentclass" required><option value="">Обери клас</option><option value="5-А">5-А</option><option value="5-Б">5-Б</option></select></label><label>Група<select id="studentgroup" required><option value="">Обери групу</option><option value="1">1</option><option value="2">2</option></select></label><label>Прізвище<input id="surname" type="text" maxlength="50" autocomplete="family-name" placeholder="Прізвище" required></label><label>Ім’я<input id="firstname" type="text" maxlength="50" autocomplete="given-name" placeholder="Ім’я" required></label></div><p class="hint" id="startStatus" role="status"></p></div><p class="hint">Наразі сайт не передає результати автоматично. Після завершення їх можна надіслати вчителю.</p><button class="primary" id="start">Почати вправи</button></div>
+<div class="card"><h2>Як виконувати вправи</h2><ul><li>5 різних вправ: короткі запитання, справжня на вигляд сторінка конкурсу, месенджер і налаштування приватності.</li><li>На екранах треба не лише відповідати, а й натискати елементи та змінювати налаштування.</li><li>За правильну відповідь із першого разу — <b>1 бал</b>, максимум 15.</li><li>Помилки — частина навчання: після кожної відповіді є пояснення.</li></ul><div class="student-form"><h2 style="font-size:1.3rem">Твої дані</h2><p class="hint">Заповни перед початком. Дані потрібні, щоб учитель міг визначити, чий це результат. Паролі й контакти не вводь.</p><div class="fields student-fields"><label>Клас<select id="studentclass" required><option value="">Обери клас</option><option value="5-А">5-А</option><option value="5-Б">5-Б</option></select></label><label>Група<select id="studentgroup" required><option value="">Обери групу</option><option value="1">1</option><option value="2">2</option></select></label><label>Прізвище<input id="surname" type="text" maxlength="50" autocomplete="family-name" placeholder="Прізвище" required></label><label>Ім’я<input id="firstname" type="text" maxlength="50" autocomplete="given-name" placeholder="Ім’я" required></label></div><p class="hint" id="startStatus" role="status"></p></div><p class="hint">Наразі сайт не передає результати автоматично. Після завершення їх можна надіслати вчителю.</p><button class="primary" id="start">Почати вправи</button></div>
 </section>
 <section id="game" class="hidden" aria-live="polite">
 <div class="statbox"><div class="stat">🎯 Завдання: <b id="counter">1 / 15</b></div><div class="stat">⭐ Бали: <b id="score">0</b></div><div class="stat">📚 Вправа: <b id="missionnum">1 / 5</b></div></div>
@@ -68,10 +106,10 @@ const units=[
 {title:"Незнайомець у повідомленнях",scene:"Незнайомий акаунт пише: «Привіт! Я друг твого брата. Скажи, де ти зараз?»",options:["Відразу напишу точну адресу.","Не повідомлятиму місцеперебування; покажу повідомлення дорослому, якому довіряю.","Надішлю фото свого будинку."],correct:1,why:"Невідомій людині не варто передавати адресу чи місцеперебування. Перевіряй особу через дорослих."},
 {title:"Сварка в групі",scene:"Двоє друзів посварилися в чаті, почали ображати одне одного.",options:["Приєднаюся, щоб підтримати когось образами.","Перешлю сварку в інші групи.","Запропоную припинити образи й обговорити проблему спокійно."],correct:2,why:"Мережевий етикет допомагає розв'язати конфлікти без приниження інших."},
 {title:"Повідомлення пізно ввечері",scene:"Однокласник не відповідає на твоє запитання о 23:30.",options:["Зачекаю до зручного часу: люди мають право не відповідати одразу.","Буду телефонувати, доки не відповість.","Напишу всім, що він мене ігнорує."],correct:0,why:"Поважай особистий час іншої людини. Не вимагай миттєвої відповіді."}]},
-{icon:"🗳️",name:"Сторінка голосування",tasks:[
-{title:"Перевір адресу",scene:"Тебе запросили проголосувати за знайому в конкурсі. Знайди підозрілий елемент на сторінці.",options:["Адреса сайту: school-stars-prize.example","Назва конкурсу: «Шкільний талант»","Зображення кубка біля заголовка"],correct:0,why:"Назва сайту не підтверджує, що це справжній організатор. Навіть красивій сторінці не можна довіряти без перевірки джерела."},
-{title:"Форма голосування",scene:"Сторінка раптом просить дані для «підтвердження голосу». Яке поле найочевидніше свідчить про небезпеку?",options:["Ім'я учасника конкурсу","Пароль від твого акаунта","Назва номінації"],correct:1,why:"Для голосування не потрібно повідомляти пароль. Це типова ознака спроби викрасти доступ до акаунта."},
-{title:"Що зробити далі?",scene:"Ти помітив підозрілі ознаки. Обери дію на екрані сайту.",options:["Відправити форму — раптом усе гаразд","Поділитися посиланням у класному чаті","Закрити сторінку й перевірити конкурс через офіційне джерело"],correct:2,why:"Не вводь дані та не поширюй підозріле посилання. Перевір інформацію на офіційному сайті чи через організаторів."}]},
+{icon:"🎃",name:"Halloween Decor Awards",tasks:[
+{title:"Голосування за найкращий декор",scene:"Розглянь роботи й обери ту, яка тобі подобається. Подивися, що сайт попросить для голосування.",options:["Зупинити заповнення й перевірити організатора конкурсу","Ввести пароль для підтвердження голосу","Надіслати посилання друзям, щоб вони теж ввели дані"],correct:0,why:"Справжньому конкурсу не потрібен пароль від акаунта чи секретний код. Перш ніж вводити особисті дані, перевір організатора та адресу сайту."},
+{title:"Що не так з адресою?",scene:"Оглянь адресу та оформлення конкурсного сайту. Яка ознака найважливіша для перевірки?",options:["Яскраві фотографії робіт","Адреса school-halloween-prizes.example, яку не можна пов'язати з відомими організаторами","Помаранчевий колір кнопки"],correct:1,why:"Невідома адреса й відсутність підтвердженої інформації про організаторів — привід перевірити сайт. Самі фото й кольори не підтверджують надійності."},
+{title:"Знайди небезпечне поле",scene:"Уяви, що ти вже відкрив форму голосування. Натисни на поле, яке ніколи не можна заповнювати для такого конкурсу.",options:["Ім'я у формі","Пароль або код входу до акаунта","Обрана робота конкурсу"],correct:1,why:"Пароль і одноразові коди — секретні дані. Жодне голосування не має вимагати їх. Ім'я та прізвище теж слід повідомляти лише після перевірки сайту."}]},
 {icon:"📱",name:"Месенджер",tasks:[
 {title:"Незнайомець пише",scene:"Привіт! Я друг твого старшого брата. Скинь, будь ласка, свою геолокацію, я поряд 😉",options:["Ось де я зараз 📍","Не надсилатиму адресу. Перевірю, хто це, через рідних.","Зараз надішлю фото свого будинку."],correct:1,why:"Не передавай свою геолокацію незнайомцям, навіть якщо вони називаються друзями родини."},
 {title:"Незвичне прохання",scene:"Друг: «Дуже треба! Скинь мені код, який прийшов тобі SMS. Потім усе поясню!»",options:["Секундочку, зараз перешлю код.","Дай номер свого телефону, я продиктую.","Коди входу нікому не надсилаю. Перевірю, чи це справді ти."],correct:2,why:"Код підтвердження — секрет. Навіть акаунт друга могли зламати."},
@@ -126,13 +164,79 @@ function makeAction(text,i){
 const b=document.createElement("button");b.className="mock-action";b.type="button";b.textContent=text;b.addEventListener("click",()=>choose(i));return b;
 }
 function renderVote(t){
-const outer=document.createElement("div");outer.className="mock-browser";
-outer.innerHTML='<div class="browserbar"><span aria-hidden="true">🌐</span><div class="fake-url">https://school-stars-prize.example/vote</div></div><div class="fake-site"><div style="font-size:2.5rem">🏆</div><h3>Шкільний талант — 2026</h3><div class="sub">Підтримай учасницю! Голосування завершується за 05:00 хвилин</div><p><strong>Для голосування потрібно підтвердити особу</strong></p><div style="border:1px solid #c6cfde;background:white;border-radius:11px;padding:10px">Ім’я учасниці: Марта · Номінація: творчість<br>Для підтвердження голосу: пароль від акаунта</div></div>';
-const controls=document.createElement("div");controls.className="fake-controls";
-const hint=document.createElement("div");hint.className="settingnote";hint.textContent=["Натисни на елемент, який викликає найбільшу підозру:","Натисни на небезпечне поле у формі:","Що зробиш із цією сторінкою?"][index%3];controls.append(hint);
-t.options.forEach((x,i)=>controls.append(makeAction(x,i)));
-outer.append(controls);$("choices").append(outer);
+const step=index%3;
+const pictures=[
+ {name:"Гарбузова фотозона",by:"Команда «Помаранчеві»",votes:"428",emoji:"🎃",src:"https://teachersmag.com/upload/blogs/202109/school-128-1632326276.jpg"},
+ {name:"Привиди під стелею",by:"Команда «Фантоми»",votes:"394",emoji:"👻",src:"https://cdn-media.sforum.vn/storage/app/media/huynhuy/trang%20tr%C3%AD%20Halloween%20m%E1%BA%A7m%20non/trang-tri-halloween-mam-non-21.jpg"},
+ {name:"Чарівний клас",by:"Команда «Кажани»",votes:"361",emoji:"🦇",src:"https://images.squarespace-cdn.com/content/v1/5709ac46b09f959184ddea1a/11c15aac-c795-4d14-9939-2ba10c5d94b9/Untitled%2Bdesign%2B%283%29.png"},
+ {name:"Вікно гарбузів",by:"Команда «Тіні»",votes:"309",emoji:"🕸️",src:"https://www.stefcova.cz/media/skola/6xOtQUmdF0mFVrWCUDDOdQ/prezentace/CLnanhk82kioVXIK3PyO9A/akce/YCOvz9SsYE6CeIdFgzdnpw/fotogalerie/irll417kukSW_2QnrEQEaA/v1/1/20251103_112033.jpg"}
+];
+const site=document.createElement("div");site.className="contest";
+const bar=document.createElement("div");bar.className="contest-browser";
+bar.innerHTML='<span class="contest-dots">●●●</span><span class="contest-address">🔒 school-halloween-prizes.example/vote-2026</span>';
+site.append(bar);
+const nav=document.createElement("div");nav.className="contest-nav";
+nav.innerHTML='<span class="contest-logo">🎃 HALLOWEEN DECOR AWARDS</span><span class="contest-small">Конкурс 2026 · Голосування</span>';
+site.append(nav);
+const hero=document.createElement("div");hero.className="contest-hero";
+hero.innerHTML='<span class="contest-kicker">Шкільний онлайн-конкурс</span><div class="contest-heading">Обери найкращий<br>Halloween-декор!</div><p>Чотири творчі команди, яскраві ідеї та лише один голос. Підтримай роботу, яка тобі найбільше подобається!</p><div class="contest-tags"><span>🔥 Голосування триває</span><span>⏳ Лишилося 05:17</span><span>🏆 Приз глядацьких симпатій</span></div>';
+site.append(hero);
+const section=document.createElement("div");section.className="contest-section";
+const sectionTitle=document.createElement("h3");sectionTitle.textContent="Роботи учасників";section.append(sectionTitle);
+const grid=document.createElement("div");grid.className="contest-grid";
+pictures.forEach((p,i)=>{
+const card=document.createElement("article");card.className="contest-entry";
+const pic=document.createElement("img");pic.alt=p.name+" — фото декору";pic.loading="lazy";pic.src=p.src;pic.referrerPolicy="no-referrer";
+const fallback=document.createElement("div");fallback.className="contest-fallback";fallback.textContent=p.emoji;
+pic.addEventListener("error",()=>{pic.style.display="none";fallback.style.display="flex";});
+const body=document.createElement("div");body.className="entry-text";
+const h=document.createElement("h4");h.textContent=p.name;
+const caption=document.createElement("p");caption.textContent=p.by+" · "+p.votes+" голосів";
+const vote=document.createElement("button");vote.type="button";vote.className="contest-vote";vote.textContent="🗳️ Проголосувати";
+vote.addEventListener("click",()=>{if(answered)return;openVoteForm(p.name);});
+body.append(h,caption,vote);card.append(pic,fallback,body);grid.append(card);
+});
+section.append(grid);site.append(section);
+const bottom=document.createElement("div");bottom.className="contest-bottom";bottom.textContent="© 2026 Halloween Decor Awards · Всі права захищено · Підсумки після завершення голосування";
+site.append(bottom);
+$("choices").append(site);
+if(step===1 || step===2)openVoteForm(pictures[1].name);
 }
+function openVoteForm(entry){
+const site=$("choices").querySelector(".contest");
+if(!site || site.querySelector(".contest-scrim"))return;
+const step=index%3;
+const panel=document.createElement("div");panel.className="contest-scrim";
+const modal=document.createElement("div");modal.className="contest-modal";
+const heading=document.createElement("h3");heading.textContent="✅ Підтвердження голосу";
+const lead=document.createElement("p");lead.textContent="Обрана робота: "+entry+". Для підтвердження система просить заповнити форму.";
+modal.append(heading,lead);
+const samples=[
+["Ім'я","Приклад: Олена"],
+["Прізвище","Приклад: Петренко"],
+["Номер телефону","+380 XX XXX XX XX"],
+["Пароль від акаунта","••••••••"]
+];
+samples.forEach(([label,val])=>{
+const field=document.createElement("label");field.className="contest-field";field.textContent=label;
+const input=document.createElement("input");input.type="text";input.value=val;input.readOnly=true;input.tabIndex=-1;input.setAttribute("aria-label",label+" — демонстраційне поле");
+field.append(input);modal.append(field);
+});
+const review=document.createElement("div");review.className="contest-review";
+const q=document.createElement("p");
+q.textContent=step===0?"Ти вже побачив форму. Що зробиш перед тим, як голосувати?":step===1?"Яку ознаку на цьому сайті важливо перевірити?":"Яке поле особливо небезпечне для заповнення?";
+review.append(q);
+const actions=document.createElement("div");actions.className="contest-actions";
+const t=tasks[index];
+t.options.forEach((option,i)=>{
+const b=document.createElement("button");b.type="button";b.className="contest-choice";b.textContent=option;b.addEventListener("click",()=>choose(i));actions.append(b);
+});
+review.append(actions);modal.append(review);
+const note=document.createElement("div");note.className="contest-note";note.textContent="Демонстраційна форма: вона не збирає дані й не надсилає голоси.";
+panel.append(modal,note);site.append(panel);
+panel.scrollIntoView({block:"nearest",behavior:"smooth"});
+}
+
 function renderChat(t){
 const outer=document.createElement("div");outer.className="mock-chat";
 const head=document.createElement("div");head.className="chat-head";head.textContent="🟢 Повідомлення · "+(["Невідомий контакт","Контакт: друг","Група класу"][index%3]);
@@ -165,7 +269,7 @@ const t=tasks[index],ok=i===t.correct;
 answers[index]={selected:i,correct:ok};
 timeByUnit[t.mi]+=Math.max(0,Math.min(300,Math.round((Date.now()-questionStarted)/1000)));
 if(ok){score++;$("score").textContent=score;}
-const buttons=[...$("choices").querySelectorAll("button.mock-action, button.choice")];
+const buttons=[...$("choices").querySelectorAll("button.mock-action, button.choice, button.contest-choice")];
 buttons.forEach((b,j)=>{b.disabled=true;if(j===t.correct)b.classList.add("right");if(j===i&&j!==t.correct)b.classList.add("wrong");});
 $("choices").querySelectorAll("button.switch,button.mock-save").forEach(b=>b.disabled=true);
 const f=$("feedback");f.className="feedback"+(ok?"":" bad");f.replaceChildren();
