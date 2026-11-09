@@ -109,7 +109,7 @@ const units=[
 {icon:"🎃",name:"Halloween Decor Awards",tasks:[
 {title:"Голосування за найкращий декор",scene:"Розглянь роботи й обери ту, яка тобі подобається. Подивися, що сайт попросить для голосування.",options:["Зупинити заповнення й перевірити організатора конкурсу","Ввести пароль для підтвердження голосу","Надіслати посилання друзям, щоб вони теж ввели дані"],correct:0,why:"Справжньому конкурсу не потрібен пароль від акаунта чи секретний код. Перш ніж вводити особисті дані, перевір організатора та адресу сайту."},
 {title:"Що не так з адресою?",scene:"Оглянь адресу та оформлення конкурсного сайту. Яка ознака найважливіша для перевірки?",options:["Яскраві фотографії робіт","Адреса school-halloween-prizes.example, яку не можна пов'язати з відомими організаторами","Помаранчевий колір кнопки"],correct:1,why:"Невідома адреса й відсутність підтвердженої інформації про організаторів — привід перевірити сайт. Самі фото й кольори не підтверджують надійності."},
-{title:"Знайди небезпечне поле",scene:"Уяви, що ти вже відкрив форму голосування. Натисни на поле, яке ніколи не можна заповнювати для такого конкурсу.",options:["Ім'я у формі","Пароль або код входу до акаунта","Обрана робота конкурсу"],correct:1,why:"Пароль і одноразові коди — секретні дані. Жодне голосування не має вимагати їх. Ім'я та прізвище теж слід повідомляти лише після перевірки сайту."}]},
+{title:"Обери два небезпечні поля",scene:"Познач два поля, які особливо небезпечно заповнювати на неперевіреному сайті конкурсу.",options:["Ім’я","Номер телефону","Пароль або код входу до акаунта","Обрана робота конкурсу"],correct:2,correctSet:[1,2],why:"Номер телефону — особисті дані, які не варто надавати сумнівному сайту. Пароль і коди входу не можна повідомляти взагалі. Ім’я та прізвище теж не слід вводити без перевірки організаторів."}]},
 {icon:"📱",name:"Месенджер",tasks:[
 {title:"Незнайомець пише",scene:"Привіт! Я друг твого старшого брата. Скинь, будь ласка, свою геолокацію, я поряд 😉",options:["Ось де я зараз 📍","Не надсилатиму адресу. Перевірю, хто це, через рідних.","Зараз надішлю фото свого будинку."],correct:1,why:"Не передавай свою геолокацію незнайомцям, навіть якщо вони називаються друзями родини."},
 {title:"Незвичне прохання",scene:"Друг: «Дуже треба! Скинь мені код, який прийшов тобі SMS. Потім усе поясню!»",options:["Секундочку, зараз перешлю код.","Дай номер свого телефону, я продиктую.","Коди входу нікому не надсилаю. Перевірю, чи це справді ти."],correct:2,why:"Код підтвердження — секрет. Навіть акаунт друга могли зламати."},
@@ -224,19 +224,59 @@ field.append(input);modal.append(field);
 });
 const review=document.createElement("div");review.className="contest-review";
 const q=document.createElement("p");
-q.textContent=step===0?"Ти вже побачив форму. Що зробиш перед тим, як голосувати?":step===1?"Яку ознаку на цьому сайті важливо перевірити?":"Яке поле особливо небезпечне для заповнення?";
+q.textContent=step===0?"Ти вже побачив форму. Що зробиш перед тим, як голосувати?":step===1?"Яку ознаку на цьому сайті важливо перевірити?":"Познач ДВА поля, які особливо небезпечно заповнювати на цьому сайті:";
 review.append(q);
 const actions=document.createElement("div");actions.className="contest-actions";
 const t=tasks[index];
+if(step===2){
+const picked=new Set();
+const choices=[];
+const instruction=document.createElement("p");instruction.textContent="Обери рівно два варіанти й натисни «Перевірити».";instruction.style.fontSize=".83rem";instruction.style.color="#604f69";actions.append(instruction);
+t.options.forEach((option,i)=>{
+const b=document.createElement("button");b.type="button";b.className="contest-choice";b.textContent="☐ "+option;b.setAttribute("aria-pressed","false");
+b.addEventListener("click",()=>{
+if(answered)return;
+if(picked.has(i))picked.delete(i);
+else if(picked.size<2)picked.add(i);
+choices.forEach((button,j)=>{button.textContent=(picked.has(j)?"☑ ":"☐ ")+t.options[j];button.setAttribute("aria-pressed",String(picked.has(j)));});
+verify.disabled=picked.size!==2;
+});
+choices.push(b);actions.append(b);
+});
+const verify=document.createElement("button");verify.type="button";verify.className="mock-save";verify.textContent="Перевірити два варіанти";verify.disabled=true;
+verify.addEventListener("click",()=>chooseContestMulti([...picked],choices,verify));
+actions.append(verify);
+}else{
 t.options.forEach((option,i)=>{
 const b=document.createElement("button");b.type="button";b.className="contest-choice";b.textContent=option;b.addEventListener("click",()=>choose(i));actions.append(b);
 });
+}
 review.append(actions);modal.append(review);
 const note=document.createElement("div");note.className="contest-note";note.textContent="Демонстраційна форма: вона не збирає дані й не надсилає голоси.";
 panel.append(modal,note);site.append(panel);
 panel.scrollIntoView({block:"nearest",behavior:"smooth"});
 }
 
+function chooseContestMulti(selected,buttons,verify){
+if(answered||selected.length!==2)return;
+answered=true;
+const t=tasks[index],correctSet=t.correctSet;
+const ok=selected.length===correctSet.length&&correctSet.every(i=>selected.includes(i));
+answers[index]={selected:selected.slice(),correct:ok};
+timeByUnit[t.mi]+=Math.max(0,Math.min(300,Math.round((Date.now()-questionStarted)/1000)));
+if(ok){score++;$("score").textContent=score;}
+buttons.forEach((b,i)=>{
+b.disabled=true;
+if(correctSet.includes(i))b.classList.add("right");
+else if(selected.includes(i))b.classList.add("wrong");
+});
+verify.disabled=true;
+const f=$("feedback");f.className="feedback"+(ok?"":" bad");f.replaceChildren();
+const title=document.createElement("strong");title.textContent=ok?"✅ Обидва варіанти правильні! +1 бал":"💡 Подивись на правильні варіанти";
+const desc=document.createElement("span");desc.textContent=t.why;f.append(title,desc);
+$("tip").textContent=ok?"Добре! Номер телефону й пароль не передаємо неперевіреним сайтам.":"Правильні поля підсвічено зеленим.";
+$("next").textContent="Далі →";$("next").classList.remove("hidden");
+}
 function renderChat(t){
 const outer=document.createElement("div");outer.className="mock-chat";
 const head=document.createElement("div");head.className="chat-head";head.textContent="🟢 Повідомлення · "+(["Невідомий контакт","Контакт: друг","Група класу"][index%3]);
