@@ -18,6 +18,7 @@ main{max-width:1000px;margin:auto;padding:22px 18px 70px}header{display:flex;ali
 .report{max-width:620px;margin:30px auto 0;text-align:left;background:#121c35;padding:20px;border-radius:18px;border:1px solid #3e5175}.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:18px 0}.fields label{font-weight:750;color:var(--muted);font-size:.9rem}.fields input,.fields select{display:block;width:100%;background:#263456;color:var(--white);border:1px solid #67779e;border-radius:12px;font:inherit;padding:12px;margin-top:7px}.breakdown{display:grid;gap:8px}.breakdown div{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid #415073;padding:7px 0}.breakdown strong{color:var(--aqua)}@media(max-width:480px){.fields{grid-template-columns:1fr}}@media print{body{background:white;color:black}header,.lead,#intro,#game,footer,.foot,.hint{display:none!important}.card,.report{box-shadow:none;border:1px solid #999;background:white;color:black}.result,.breakdown strong{color:black}.fields input,.fields select{color:black;background:white}.finalscore{color:black}}
 
 .finish-mark{font-size:3.8rem}.student-summary{background:#233355;border:1px solid #425b87;padding:14px 16px;border-radius:12px;font-weight:800;margin:13px 0 17px}.report-submit{text-align:center;padding:17px 0 3px}.report-submit button{width:100%;max-width:440px;padding:16px;font-size:1.02rem}.report-submit button:disabled{opacity:.65;cursor:not-allowed}.report-submit .hint{margin-top:12px}
+.connection-warning{background:#54202e;color:#fff3ef;border:2px solid #f5a4b4;border-radius:14px;padding:18px 20px;margin:14px 0;font-weight:800;line-height:1.5}.connection-warning.hidden{display:none}.primary:disabled{opacity:.52;cursor:not-allowed}
 /* Interactive screen simulations */
 .mock-browser,.mock-chat,.mock-settings{border:1px solid #647598;border-radius:20px;background:#f5f8ff;color:#172344;overflow:hidden;margin:20px 0}
 .browserbar{padding:13px;background:#e1e8f6;display:flex;align-items:center;gap:10px;font-size:.86rem}
@@ -171,7 +172,7 @@ main{max-width:1000px;margin:auto;padding:22px 18px 70px}header{display:flex;ali
 <header><div class="brand">💬 СПІЛКУВАННЯ ОНЛАЙН <span style="color:var(--aqua)">/ 5 КЛАС</span></div><span class="chip">Практика онлайн-безпеки</span></header>
 <section id="intro">
 <div class="hero"><div><div class="eyebrow">Інтерактивна практика · 5 вправ</div><h1>Пиши ввічливо.<br>Спілкуйся безпечно.<br><span style="color:var(--aqua)">Думай перед кліком.</span></h1><p class="lead">Розбери ситуації зі шкільних чатів, онлайн-ігор і месенджерів. Обирай рішення та дізнавайся, як захистити себе й поважати інших.</p></div><div class="mascot" aria-hidden="true">💬</div></div>
-<div class="card"><h2>Як виконувати вправи</h2><ul><li>5 різних вправ: короткі запитання, справжня на вигляд сторінка конкурсу, месенджер і налаштування приватності.</li><li>На екранах треба не лише відповідати, а й натискати елементи та змінювати налаштування.</li><li>За правильну відповідь із першого разу — <b>1 бал</b>, максимум 15.</li><li>Помилки — частина навчання: після кожної відповіді є пояснення.</li></ul><div class="student-form"><h2 style="font-size:1.3rem">Твої дані</h2><p class="hint">Заповни перед початком. Дані потрібні, щоб учитель міг визначити, чий це результат. Паролі й контакти не вводь.</p><div class="fields student-fields"><label>Клас<select id="studentclass" required><option value="">Обери клас</option><option value="5-А">5-А</option><option value="5-Б">5-Б</option><option value="5-В">5-В</option></select></label><label>Група<select id="studentgroup" required><option value="">Обери групу</option><option value="1">1</option><option value="2">2</option></select></label><label>Прізвище<input id="surname" type="text" maxlength="50" autocomplete="family-name" placeholder="Прізвище" required></label><label>Ім’я<input id="firstname" type="text" maxlength="50" autocomplete="given-name" placeholder="Ім’я" required></label></div><p class="hint" id="startStatus" role="status"></p></div><p class="hint">Наразі сайт не передає результати автоматично. Після завершення їх можна надіслати вчителю.</p><button class="primary" id="start">Почати вправи</button></div>
+<div class="card"><h2>Як виконувати вправи</h2><ul><li>5 різних вправ: короткі запитання, справжня на вигляд сторінка конкурсу, месенджер і налаштування приватності.</li><li>На екранах треба не лише відповідати, а й натискати елементи та змінювати налаштування.</li><li>За правильну відповідь із першого разу — <b>1 бал</b>, максимум 15.</li><li>Помилки — частина навчання: після кожної відповіді є пояснення.</li></ul><div class="student-form"><h2 style="font-size:1.3rem">Твої дані</h2><p class="hint">Заповни перед початком. Дані потрібні, щоб учитель міг визначити, чий це результат. Паролі й контакти не вводь.</p><div class="fields student-fields"><label>Клас<select id="studentclass" required><option value="">Обери клас</option><option value="5-А">5-А</option><option value="5-Б">5-Б</option><option value="5-В">5-В</option></select></label><label>Група<select id="studentgroup" required><option value="">Обери групу</option><option value="1">1</option><option value="2">2</option></select></label><label>Прізвище<input id="surname" type="text" maxlength="50" autocomplete="family-name" placeholder="Прізвище" required></label><label>Ім’я<input id="firstname" type="text" maxlength="50" autocomplete="given-name" placeholder="Ім’я" required></label></div><p class="hint" id="startStatus" role="status"></p></div><p id="connectionWarning" class="connection-warning" role="alert">⛔ Журнал результатів не підключено. Починати роботу зараз не можна: відповіді не збережуться. Повідом учителя.</p><button class="primary" id="start">Почати вправи</button></div>
 </section>
 <section id="game" class="hidden" aria-live="polite">
 <div class="statbox"><div class="stat">🎯 Завдання: <b id="counter">1 / 15</b></div><div class="stat">⭐ Бали: <b id="score">0</b></div><div class="stat">📚 Вправа: <b id="missionnum">1 / 5</b></div></div>
@@ -213,6 +214,9 @@ let answers=[],timeByUnit=[0,0,0,0,0],attempt=1,questionStarted=0;
 const $=id=>document.getElementById(id);
 // Paste a deployed Google Apps Script Web App /exec URL here to enable automatic submission.
 const RESULTS_ENDPOINT="";
+const endpointConfigured=/^https:\/\/script\.google\.com\/macros\/s\/[^/?#]+\/exec$/.test(RESULTS_ENDPOINT);
+$("start").disabled=!endpointConfigured;
+$("connectionWarning").classList.toggle("hidden",endpointConfigured);
 function show(id){["intro","game","finish"].forEach(s=>$(s).classList.toggle("hidden",s!==id));window.scrollTo({top:0,behavior:"instant"});}
 function render(){
 answered=false;
@@ -652,13 +656,14 @@ const scores=units.map((u,mi)=>answers.slice(mi*3,mi*3+3).filter(a=>a&&a.correct
 $("breakdown").replaceChildren();units.forEach((u,i)=>{const row=document.createElement("div"),label=document.createElement("span"),v=document.createElement("strong");label.textContent=u.name;v.textContent=scores[i]+" / 3";row.append(label,v);$("breakdown").append(row);});
 $("reportStatus").textContent="";
 $("studentSummary").textContent=$("studentclass").value+" · група "+$("studentgroup").value+" · "+$("surname").value.trim()+" "+$("firstname").value.trim();
-$("sendResults").disabled=!RESULTS_ENDPOINT;
-$("sendResults").textContent=RESULTS_ENDPOINT?"📨 Надіслати результат учителю":"📨 Очікуємо підключення журналу";
-$("reportStatus").textContent=RESULTS_ENDPOINT?"Натисни кнопку один раз після перевірки даних.":"Електронний журнал ще не підключено. Повідом учителя.";
+$("sendResults").disabled=!endpointConfigured;
+$("sendResults").textContent=endpointConfigured?"📨 Надіслати результат учителю":"📨 Очікуємо підключення журналу";
+$("reportStatus").textContent=endpointConfigured?"Натисни кнопку один раз після перевірки даних.":"Електронний журнал ще не підключено. Повідом учителя.";
 submitStarted=false;
 show("finish");
 }
 $("start").addEventListener("click",()=>{
+if(!endpointConfigured){$("startStatus").textContent="Роботу заблоковано, доки вчитель не підключить журнал.";return;}
 const fields=["studentclass","studentgroup","surname","firstname"];const missing=fields.some(id=>!$(id).value.trim());
 if(missing){$("startStatus").textContent="Заповни всі чотири поля перед початком.";return;}
 $("startStatus").textContent="";index=0;score=0;attempt=1;answers=[];timeByUnit=[0,0,0,0,0];show("game");render();
@@ -668,7 +673,7 @@ $("restart").addEventListener("click",()=>{index=0;score=0;attempt++;answers=[];
 
 let submitStarted=false;
 $("sendResults").addEventListener("click",async()=>{
-if(submitStarted||!RESULTS_ENDPOINT)return;
+if(submitStarted||!endpointConfigured)return;
 const schoolClass=$("studentclass").value,group=$("studentgroup").value;
 const surname=$("surname").value.trim(),firstname=$("firstname").value.trim();
 if(!schoolClass||!group||!surname||!firstname){
