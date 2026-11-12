@@ -11,6 +11,10 @@ const TARGETS = Object.freeze({
   "5-Б": Object.freeze({
     "1": "1GLqm-9fv-HppbXYHniOGL-D8VUjxPr8dQghlGtbC034",
     "2": "1DxgJx952AEMguMpA9Okj0ADNWvbeGMapWBqgFNqmYR0"
+  }),
+  "5-В": Object.freeze({
+    "1": "1HlPRx3bM5KYanQPJ4t3AeKK5VFWgbkv2aH55VfUIj-E",
+    "2": "1xjVHN2EMfyCq0-vzrogKe_jQjY1dvICGupz_-cmg3og"
   })
 });
 const HEADERS = [
@@ -20,9 +24,9 @@ const HEADERS = [
 const EXERCISES = [
   "Етикет у чаті",
   "Як відповісти?",
-  "Підозрілі повідомлення",
-  "Особисті дані",
-  "Перевір себе"
+  "Halloween Decor Awards",
+  "Месенджер",
+  "Цифрові налаштування"
 ];
 function doGet() {
   return ContentService.createTextOutput("Приймач результатів готовий.").setMimeType(ContentService.MimeType.TEXT);
