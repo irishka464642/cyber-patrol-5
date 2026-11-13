@@ -1,0 +1,28 @@
+<!doctype html><html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Перевірка електронного журналу · 5 клас</title>
+<style>body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:#182340;color:#eef3ff;margin:0;padding:28px 15px;line-height:1.6}main{max-width:670px;margin:auto;background:#fff;color:#182340;padding:25px;border-radius:21px}h1{font-size:1.55rem;line-height:1.3}p{margin:13px 0}label{display:block;font-weight:750;margin:14px 0 5px}select,button{font:inherit;width:100%;box-sizing:border-box;padding:12px;border-radius:12px}select{border:1px solid #aab5ce}button{background:#275fbd;border:0;color:#fff;font-weight:800;cursor:pointer;margin:16px 0 8px}button:disabled{opacity:.5}a{color:#174da5}#status{padding:13px;background:#e8eef7;border-radius:12px;white-space:pre-line}.warning{background:#fff2df;border-left:4px solid #db8a19;padding:13px;border-radius:8px}.small{font-size:.87rem;color:#586b81}</style></head><body>
+<main><h1>🔧 Перевірка запису в Google Таблицю</h1>
+<p>Ця сторінка — <strong>для вчителя</strong>, не для учнів. Вона надішле один контрольний запис із вигаданими даними. Реальні імена учнів не використовуються.</p>
+<p class="warning"><strong>Увага:</strong> сама відправка запиту ще не доводить, що він записаний! Після тесту обов'язково перевір таблицю в новій вкладці.</p>
+<p><a href="https://script.google.com/macros/s/AKfycbyvKmGaTn9v9-SgircqRylKsbFC4l10IAuUHvnkIjapCIaxDxdq-W-BhEHuzxtNBhsJ/exec" target="_blank" rel="noopener noreferrer">1. Відкрити адресy Apps Script</a> — без входу в Google вона має показати «Приймач результатів готовий.»</p>
+<label for="sheet">2. Обери таблицю для перевірки</label>
+<select id="sheet"><option value="5-А|1|1o0ozxUICmgg4hSIQ382sfbjFFxXSh0TAdOznEzpYLp4">5-А · група 1</option><option value="5-А|2|1k95-4TbeKOj3pMehAUhZ_VtMD45G_lNo93f7JPBRhEM">5-А · група 2</option><option value="5-Б|1|1GLqm-9fv-HppbXYHniOGL-D8VUjxPr8dQghlGtbC034">5-Б · група 1</option><option value="5-Б|2|1DxgJx952AEMguMpA9Okj0ADNWvbeGMapWBqgFNqmYR0">5-Б · група 2</option><option value="5-В|1|1HlPRx3bM5KYanQPJ4t3AeKK5VFWgbkv2aH55VfUIj-E" selected>5-В · група 1</option><option value="5-В|2|1xjVHN2EMfyCq0-vzrogKe_jQjY1dvICGupz_-cmg3og">5-В · група 2</option></select>
+<button id="test" type="button">3. Надіслати контрольний результат</button>
+<p id="status" role="status" aria-live="polite">Тест ще не запускали.</p>
+<p><a id="sheetLink" target="_blank" rel="noopener noreferrer">4. Відкрити цільову Google Таблицю</a></p>
+<p class="small">У таблиці «Результати» повинні з'явитися п'ять рядків із прізвищем «ТЕСТ», ім'ям «ПЕРЕВІРКА», балами 1, 2, 3, 0, 1. Якщо рядків немає — скрипт не працює або його розгортання/доступи треба виправити. Після перевірки тестові рядки можна видалити. Учнівська частина сайту залишається заблокованою до підтвердження.</p>
+</main>
+<script>
+const ENDPOINT="https://script.google.com/macros/s/AKfycbyvKmGaTn9v9-SgircqRylKsbFC4l10IAuUHvnkIjapCIaxDxdq-W-BhEHuzxtNBhsJ/exec";
+const select=document.getElementById("sheet"),button=document.getElementById("test"),status=document.getElementById("status"),link=document.getElementById("sheetLink");
+function sync(){const [cls,grp,id]=select.value.split("|");link.href="https://docs.google.com/spreadsheets/d/"+id+"/edit";link.textContent="Відкрити таблицю "+cls+" · група "+grp;}
+select.addEventListener("change",sync);sync();
+button.addEventListener("click",async()=>{
+const [schoolClass,group]=select.value.split("|");
+button.disabled=true;status.textContent="Надсилаємо тестовий запис до "+schoolClass+", група "+group+"…";
+const payload={schoolClass,group,surname:"ТЕСТ",firstname:"ПЕРЕВІРКА",scores:[1,2,3,0,1],times:[10,20,30,40,50],attempt:1};
+try{
+await fetch(ENDPOINT,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(payload)});
+status.textContent="Запит відправлено. Тепер відкрий Google Таблицю і перевір вкладку «Результати». Має бути 5 рядків «ТЕСТ ПЕРЕВІРКА». Якщо їх немає, тест НЕ ПРОЙДЕНО. Повідом учителю/розробнику.";
+}catch(err){status.textContent="Помилка надсилання: "+err.message+". Тест не пройдено.";}finally{button.disabled=false;}
+});
+</script></body></html>
