@@ -213,10 +213,16 @@ let index=0,score=0,answered=false;
 let answers=[],timeByUnit=[0,0,0,0,0],attempt=1,questionStarted=0;
 const $=id=>document.getElementById(id);
 // Paste a deployed Google Apps Script Web App /exec URL here to enable automatic submission.
-const RESULTS_ENDPOINT="";
+const RESULTS_ENDPOINT="https://script.google.com/macros/s/AKfycbyvKmGaTn9v9-SgircqRylKsbFC4l10IAuUHvnkIjapCIaxDxdq-W-BhEHuzxtNBhsJ/exec";
 const endpointConfigured=/^https:\/\/script\.google\.com\/macros\/s\/[^/?#]+\/exec$/.test(RESULTS_ENDPOINT);
-$("start").disabled=!endpointConfigured;
-$("connectionWarning").classList.toggle("hidden",endpointConfigured);
+// Do not unlock school sessions until a real test result is confirmed in Google Sheets.
+const resultsConnectionVerified=false;
+const studentAccessEnabled=endpointConfigured&&resultsConnectionVerified;
+$("start").disabled=!studentAccessEnabled;
+$("connectionWarning").classList.toggle("hidden",studentAccessEnabled);
+if(endpointConfigured&&!resultsConnectionVerified){
+  $("connectionWarning").textContent="⛔ Адресу електронного журналу підключено, але контрольний запис ще не підтверджений у таблиці. Учитель перевіряє з'єднання. Поки що виконання заблоковане.";
+}
 function show(id){["intro","game","finish"].forEach(s=>$(s).classList.toggle("hidden",s!==id));window.scrollTo({top:0,behavior:"instant"});}
 function render(){
 answered=false;
@@ -663,7 +669,7 @@ submitStarted=false;
 show("finish");
 }
 $("start").addEventListener("click",()=>{
-if(!endpointConfigured){$("startStatus").textContent="Роботу заблоковано, доки вчитель не підключить журнал.";return;}
+if(!studentAccessEnabled){$("startStatus").textContent="Роботу заблоковано до перевірки запису в Google Таблиці.";return;}
 const fields=["studentclass","studentgroup","surname","firstname"];const missing=fields.some(id=>!$(id).value.trim());
 if(missing){$("startStatus").textContent="Заповни всі чотири поля перед початком.";return;}
 $("startStatus").textContent="";index=0;score=0;attempt=1;answers=[];timeByUnit=[0,0,0,0,0];show("game");render();
