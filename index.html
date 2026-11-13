@@ -215,8 +215,8 @@ const $=id=>document.getElementById(id);
 // Paste a deployed Google Apps Script Web App /exec URL here to enable automatic submission.
 const RESULTS_ENDPOINT="https://script.google.com/macros/s/AKfycbyvKmGaTn9v9-SgircqRylKsbFC4l10IAuUHvnkIjapCIaxDxdq-W-BhEHuzxtNBhsJ/exec";
 const endpointConfigured=/^https:\/\/script\.google\.com\/macros\/s\/[^/?#]+\/exec$/.test(RESULTS_ENDPOINT);
-// Do not unlock school sessions until a real test result is confirmed in Google Sheets.
-const resultsConnectionVerified=false;
+// Verified 2026-11-13 by teacher: a test record appeared in Google Sheets and was removed afterwards.
+const resultsConnectionVerified=true;
 const studentAccessEnabled=endpointConfigured&&resultsConnectionVerified;
 $("start").disabled=!studentAccessEnabled;
 $("connectionWarning").classList.toggle("hidden",studentAccessEnabled);
